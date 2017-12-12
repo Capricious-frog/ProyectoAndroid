@@ -13,9 +13,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:onClick="cerrar"
-        android:text="@string/salir2"
+        android:text="@string/salir"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button6"
@@ -24,8 +24,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:onClick="lanzarPedidoKebab"
-        android:text="@string/siguiente2"
+        android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <EditText

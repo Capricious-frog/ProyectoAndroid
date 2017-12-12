@@ -10,8 +10,4 @@
     <string name="direccion">Direccion</string>
     <string name="telefono">Telefono</string>
     <string name="email">email</string>
-    <string name="siguiente2">siguiente</string>
-    <string name="salir2">salir</string>
-    <string name="siguente4">Siguente</string>
-    <string name="salir4">Salir</string>
 </resources>
