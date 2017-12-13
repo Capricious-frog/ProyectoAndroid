@@ -10,4 +10,36 @@
     <string name="direccion">Direccion</string>
     <string name="telefono">Telefono</string>
     <string name="email">email</string>
+
+    <string-array name="tipo_kebab">
+        <item>Döner</item>
+        <item>Dürüm</item>
+        <item>Lahmacum</item>
+        <item>Shawarma</item>
+        <item>Gyros</item>
+    </string-array>
+
+    <string-array name="tipo_carne">
+        <item>Pollo</item>
+        <item>Ternera</item>
+        <item>Cordero</item>
+    </string-array>
+
+    <string-array name="tamaño">
+        <item>Normal</item>
+        <item>Completo</item>
+    </string-array>
+
+    <string-array name="cantidad">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
 </resources>
