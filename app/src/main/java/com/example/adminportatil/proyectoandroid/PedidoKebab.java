@@ -1,6 +1,5 @@
 package com.example.adminportatil.proyectoandroid;
 
-import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
