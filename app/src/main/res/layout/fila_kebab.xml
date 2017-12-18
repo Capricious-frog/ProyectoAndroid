@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/my_row"
+    android:id="@+id/fila_insertar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="92dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
         android:entries="@array/tipo_kebab"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="36dp" />
 
     <Spinner
         android:id="@+id/spinner2"
-        android:layout_width="75dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
         android:entries="@array/tipo_carne"
         tools:layout_editor_absoluteX="123dp"
         tools:layout_editor_absoluteY="36dp" />
 
     <Spinner
         android:id="@+id/spinner3"
-        android:layout_width="75dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
         android:entries="@array/tamaño"
         tools:layout_editor_absoluteX="206dp"
         tools:layout_editor_absoluteY="36dp" />
 
     <Spinner
         android:id="@+id/spinner4"
-        android:layout_width="87dp"
-        android:layout_height="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
         android:entries="@array/cantidad"
         tools:layout_editor_absoluteX="289dp"
         tools:layout_editor_absoluteY="36dp" />
