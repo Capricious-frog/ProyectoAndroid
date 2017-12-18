@@ -1,5 +1,6 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -37,7 +38,7 @@ public class PedidoKebab extends AppCompatActivity {
 
         LayoutInflater inflator = PedidoKebab.this.getLayoutInflater();
         TableRow rowView = new TableRow(v.getContext());
-        inflator.inflate(R.layout.activity_pedido_kebab, rowView);
+        inflator.inflate(R.layout.fila_kebab, rowView);
         tl.addView(rowView);
     }
 
