@@ -8,7 +8,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -18,109 +18,125 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginEnd="11dp"
         android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="35dp"
         android:onClick="anadir_fila"
         android:text="@string/anadir_fila"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/button4" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
-    <TableLayout
-        android:id="@+id/tablaKebabs"
+    <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="3000dp">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="92dp"
-                android:layout_height="30dp"
-                android:entries="@array/tipo_kebab"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="36dp" />
+            <TableLayout
+                android:id="@+id/tablaKebabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/button3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:entries="@array/tipo_carne"
-                tools:layout_editor_absoluteX="123dp"
-                tools:layout_editor_absoluteY="36dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:entries="@array/tamaño"
-                tools:layout_editor_absoluteX="206dp"
-                tools:layout_editor_absoluteY="36dp" />
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="92dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tipo_kebab"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="36dp" />
 
-            <Spinner
-                android:id="@+id/spinner4"
-                android:layout_width="87dp"
-                android:layout_height="30dp"
-                android:entries="@array/cantidad"
-                tools:layout_editor_absoluteX="289dp"
-                tools:layout_editor_absoluteY="36dp" />
+                    <Spinner
+                        android:id="@+id/spinner2"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tipo_carne"
+                        tools:layout_editor_absoluteX="123dp"
+                        tools:layout_editor_absoluteY="36dp" />
 
-        </TableRow>
+                    <Spinner
+                        android:id="@+id/spinner3"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tamaño"
+                        tools:layout_editor_absoluteX="206dp"
+                        tools:layout_editor_absoluteY="36dp" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                    <Spinner
+                        android:id="@+id/spinner4"
+                        android:layout_width="87dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/cantidad"
+                        tools:layout_editor_absoluteX="289dp"
+                        tools:layout_editor_absoluteY="36dp" />
 
-            <Spinner
-                android:id="@+id/spinner9"
-                android:layout_width="92dp"
-                android:layout_height="30dp"
-                android:entries="@array/tipo_kebab"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="36dp" />
+                </TableRow>
 
-            <Spinner
-                android:id="@+id/spinner10"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:entries="@array/tipo_carne"
-                tools:layout_editor_absoluteX="123dp"
-                tools:layout_editor_absoluteY="36dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Spinner
-                android:id="@+id/spinner11"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
-                android:entries="@array/tamaño"
-                tools:layout_editor_absoluteX="206dp"
-                tools:layout_editor_absoluteY="36dp" />
+                    <Spinner
+                        android:id="@+id/spinner9"
+                        android:layout_width="92dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tipo_kebab"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="36dp" />
 
-            <Spinner
-                android:id="@+id/spinner12"
-                android:layout_width="87dp"
-                android:layout_height="30dp"
-                android:entries="@array/cantidad"
-                tools:layout_editor_absoluteX="289dp"
-                tools:layout_editor_absoluteY="36dp" />
-        </TableRow>
-    </TableLayout>
+                    <Spinner
+                        android:id="@+id/spinner10"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tipo_carne"
+                        tools:layout_editor_absoluteX="123dp"
+                        tools:layout_editor_absoluteY="36dp" />
+
+                    <Spinner
+                        android:id="@+id/spinner11"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/tamaño"
+                        tools:layout_editor_absoluteX="206dp"
+                        tools:layout_editor_absoluteY="36dp" />
+
+                    <Spinner
+                        android:id="@+id/spinner12"
+                        android:layout_width="87dp"
+                        android:layout_height="30dp"
+                        android:entries="@array/cantidad"
+                        tools:layout_editor_absoluteX="289dp"
+                        tools:layout_editor_absoluteY="36dp" />
+                </TableRow>
+            </TableLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
