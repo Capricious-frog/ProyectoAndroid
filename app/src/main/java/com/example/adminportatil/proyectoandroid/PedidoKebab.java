@@ -19,40 +19,27 @@ public class PedidoKebab extends AppCompatActivity {
     }
 
     public void anadir_fila(View v) {
-        if (contador >= 30) {
+        Toast toast = Toast.makeText(this, "No puedes añadir mas. Ya tienes todas las combinaciones posibles! :)", Toast.LENGTH_SHORT);
+
+        if (contador < 30) {
             contador++;
 
-        /* Find Tablelayout defined in main.xml */
             TableLayout tl = findViewById(R.id.tablaKebabs);
-        /* Create a new row to be added. */
-            TableRow tr = new TableRow(this);
-            tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-        /* Create a Button to be the row-content. */
-            Button b = new Button(this);
-            b.setText("Dynamic Button");
-            b.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-        /* Add Button to row. */
-            tr.addView(b);
-        /* Add row to TableLayout. */
-            //tr.setBackgroundResource(R.drawable.sf_gradient_03);
-            tl.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+            LayoutInflater inflator = PedidoKebab.this.getLayoutInflater();
+            TableRow rowView = new TableRow(v.getContext());
+            inflator.inflate(R.layout.fila_kebab, rowView);
+            tl.addView(rowView);
 
         } else {
-            Toast toast = Toast.makeText(this, "No puedes añadir mas. Ya tienes todas las combinaciones posibles! :)", Toast.LENGTH_SHORT);
+            try{
+                 toast.getView().isShown();
+            } catch (Exception e) {
+                System.out.println("Ya hay un toast en pantalla.");
+            }
             toast.show();
         }
 
-    }
-
-    public void anadir_fila2(View v) {
-        contador++;
-
-        TableLayout tl = findViewById(R.id.tablaKebabs);
-
-        LayoutInflater inflator = PedidoKebab.this.getLayoutInflater();
-        TableRow rowView = new TableRow(v.getContext());
-        inflator.inflate(R.layout.fila_kebab, rowView);
-        tl.addView(rowView);
     }
 
     @Override
