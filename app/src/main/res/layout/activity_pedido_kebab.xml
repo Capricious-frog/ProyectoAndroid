@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="15dp"
+        android:onClick="lanzarPedidoKebab"
         android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -33,11 +34,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:onClick="anadir_fila"
-        android:text="@string/anadir_fila"
+        android:text="@string/anadir_kebab"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button1" />
+        app:layout_constraintEnd_toStartOf="@+id/button1"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <ScrollView
         android:id="@+id/scrollView2"

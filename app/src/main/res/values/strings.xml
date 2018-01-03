@@ -2,7 +2,7 @@
     <string name="app_name">Proyecto Android</string>
     <string name="siguiente">Siguiente</string>
     <string name="salir">Salir</string>
-    <string name="anadir_fila">añadir fila</string>
+    <string name="anadir_kebab">añadir kebab</string>
     <string name="tel_fono_943_25_85_35">Teléfono: 943 25 85 35</string>
     <string name="horario_12_00_24_00">Horario: 12:00–24:00</string>
     <string name="direcci_n_plaza_de_marugame_8_20018_san_sebasti_n_guip_zcoa">Dirección: Plaza de Marugame, 8, 20018 San Sebastián, Guipúzcoa</string>
@@ -11,6 +11,14 @@
     <string name="direccion">Direccion</string>
     <string name="telefono">Telefono</string>
     <string name="email">email</string>
+    <string name="cancelar">cancelar</string>
+    <string name="aceptar">aceptar</string>
+    <string name="refesco_cola">Refesco cola</string>
+    <string name="refresco_limon">Refresco limon</string>
+    <string name="refresco_naranja">Refresco naranja</string>
+    <string name="vino">Vino</string>
+    <string name="cerveza">Cerveza</string>
+    <string name="agua">Agua</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>

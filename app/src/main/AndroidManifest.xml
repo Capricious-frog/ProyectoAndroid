@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".PedidoKebab" />
         <activity android:name=".DatosCliente" />
-        <activity android:name=".PedidoBebidasActivity"></activity>
+        <activity android:name=".PedidoBebidasActivity" />
+        <activity android:name=".ResumenPedido"></activity>
     </application>
 
 </manifest>
