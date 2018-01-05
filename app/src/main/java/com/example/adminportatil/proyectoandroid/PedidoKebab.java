@@ -9,10 +9,13 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
+import java.util.ArrayList;
 
 public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
+    String nom, ap, telf, email;
+    Spinner kebab, carne, tamano, cantidad;
 
     public void cerrar(View v){
         finish();
@@ -23,8 +26,19 @@ public class PedidoKebab extends AppCompatActivity {
         Spinner sp = findViewById(R.id.cantidad0);
 
         if (sp.getSelectedItemPosition() != 0){
-            Intent i = new Intent(this, PedidoBebidasActivity.class);
-            startActivity(i);
+            ArrayList<int[]> array_kebab = new ArrayList<>();
+
+            //ArrayList compuesto de arrays. Cada array contiene la informacion de una fila. (Por momento solo añade la primera fila)
+            array_kebab.add(new int[]{kebab.getSelectedItemPosition(), carne.getSelectedItemPosition() , tamano.getSelectedItemPosition(), cantidad.getSelectedItemPosition()});
+
+            Intent intent = new Intent(this, PedidoBebidasActivity.class);
+            intent.putExtra("nombre", nom);
+            intent.putExtra("apellido", ap);
+            intent.putExtra("telefono", telf);
+            intent.putExtra("email", email);
+            intent.putExtra("kebab", array_kebab);
+
+            startActivity(intent);
         } else {
             Toast toast = Toast.makeText(this, "Tienes que seleccionar al menos un producto.", Toast.LENGTH_SHORT);
             toast.show();
@@ -59,5 +73,17 @@ public class PedidoKebab extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pedido_kebab);
+
+        kebab = findViewById(R.id.tipo_kebab0);
+        carne = findViewById(R.id.tipo_carne0);
+        tamano = findViewById(R.id.tamano0);
+        cantidad = findViewById(R.id.cantidad0);
+
+        Intent intent = getIntent();
+
+        nom = intent.getStringExtra("nombre");
+        ap = intent.getStringExtra("apellido");
+        telf = intent.getStringExtra("telefono");
+        email = intent.getStringExtra("email");
     }
 }
