@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -19,8 +20,15 @@ public class PedidoKebab extends AppCompatActivity {
     }
 
     public void lanzarPedidoKebab(View view){
+        Spinner sp = findViewById(R.id.cantidad0);
+
+        if (sp.getSelectedItemPosition() != 0){
             Intent i = new Intent(this, PedidoBebidasActivity.class);
             startActivity(i);
+        } else {
+            Toast toast = Toast.makeText(this, "Tienes que seleccionar al menos un producto.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void anadir_fila(View v) {

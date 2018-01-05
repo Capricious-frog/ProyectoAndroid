@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.adminportatil.proyectoandroid">
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -22,7 +23,8 @@
         <activity android:name=".PedidoKebab" />
         <activity android:name=".DatosCliente" />
         <activity android:name=".PedidoBebidasActivity" />
-        <activity android:name=".ResumenPedido"></activity>
+        <activity android:name=".ResumenPedido" />
+
     </application>
 
 </manifest>
