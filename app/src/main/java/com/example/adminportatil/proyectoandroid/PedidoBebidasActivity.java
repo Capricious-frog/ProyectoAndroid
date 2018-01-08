@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 public class PedidoBebidasActivity extends AppCompatActivity {
     String nom, ap, telf, email;
+    ArrayList<int[]> kebab;
 
     public void cerrar(View v){
         finish();
@@ -30,8 +33,8 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         intent.putExtra("apellido", ap);
         intent.putExtra("telefono", telf);
         intent.putExtra("email", email);
+        intent.putExtra("kebab", kebab);
         intent.putExtra("bebidas", bebidas);
-        //intent.putExtra(); Array con la informacion de la actividad actual
 
         startActivity(intent);
     }
@@ -47,6 +50,6 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         ap = intent.getStringExtra("apellido");
         telf = intent.getStringExtra("telefono");
         email = intent.getStringExtra("email");
-        //kebab = intent.getStringExtra(); Array con la informacion de pedido kebab
+        kebab = (ArrayList<int[]>) intent.getSerializableExtra("kebab");
     }
 }

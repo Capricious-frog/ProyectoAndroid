@@ -5,8 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class ResumenPedido extends AppCompatActivity {
     String nom, ap, telf, email;
+    ArrayList<int[]> kebab;
     int[] bebidas;
 
     public void cerrar(View v){
@@ -25,7 +28,7 @@ public class ResumenPedido extends AppCompatActivity {
         ap = intent.getStringExtra("apellido");
         telf = intent.getStringExtra("telefono");
         email = intent.getStringExtra("email");
-        //kebab = intent.getStringArrayExtra(); //Array con la informacion de pedido kebab
+        kebab = (ArrayList<int[]>) intent.getSerializableExtra("kebab");
         bebidas = intent.getIntArrayExtra("bebidas");
 
         System.out.println(nom);
