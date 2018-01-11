@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="201dp"
-        android:layout_height="0dp"
+        android:layout_width="293dp"
+        android:layout_height="259dp"
         android:layout_marginBottom="47dp"
         android:layout_marginTop="44dp"
         android:contentDescription="@string/logo"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/logokebab" />
 
     <Button
         android:id="@+id/button"
