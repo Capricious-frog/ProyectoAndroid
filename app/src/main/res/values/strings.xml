@@ -19,6 +19,7 @@
     <string name="vino">Vino</string>
     <string name="cerveza">Cerveza</string>
     <string name="agua">Agua</string>
+    <string name="textview">TextView</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>

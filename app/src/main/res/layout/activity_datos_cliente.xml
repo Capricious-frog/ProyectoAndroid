@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.adminportatil.proyectoandroid.DatosCliente">
+    tools:context="com.example.adminportatil.proyectoandroid.DatosCliente"
+    tools:layout_editor_absoluteY="25dp">
 
     <Button
         android:id="@+id/button"
@@ -22,23 +23,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="14dp"
         android:onClick="lanzarPedidoKebab"
         android:text="@string/siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="121dp"
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -50,20 +50,18 @@
         android:ems="10"
         android:hint="@string/direccion"
         android:inputType="text"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
     <EditText
         android:id="@+id/telefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/telefono"
         android:inputType="phone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/direccion"
         app:layout_constraintTop_toBottomOf="@+id/direccion" />
 
     <EditText
@@ -75,6 +73,19 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textWebEmailAddress"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/telefono" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:text="@string/textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Introduce tus datos"
+        android:textSize="20sp" />
+
 </android.support.constraint.ConstraintLayout>
