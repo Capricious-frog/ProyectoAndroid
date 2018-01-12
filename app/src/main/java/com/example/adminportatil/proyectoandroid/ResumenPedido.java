@@ -43,37 +43,37 @@ public class ResumenPedido extends AppCompatActivity {
             for(int x = 0; x < kebab.get(i).size(); x++) {
                 if (x == 0 && kebab.get(i).get(x) == 0) {
                     texto.append("\nDönner ");
-                    precio += 4 *  kebab.get(i).get(3);
+                    precio += 4f * (float) kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 1) {
                     texto.append("\nDürüm ");
-                    precio += 4.50 *  kebab.get(i).get(3);
+                    precio += 4.50f * (float) kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 2) {
                     texto.append("\nLahmacum ");
-                    precio += 5 *  kebab.get(i).get(3);
+                    precio += 5f * (float) kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 3) {
                     texto.append("\nShawarms ");
-                    precio += 4.50 *  kebab.get(i).get(3);
+                    precio += 4.50f * (float) kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 4) {
                     texto.append("\nGyros ");
-                    precio += 5 *  kebab.get(i).get(3);
+                    precio += 5f * (float) kebab.get(i).get(3);
                 }
 
                 if(x == 1 && kebab.get(i).get(x) == 0) {
                     texto.append("Pollo  ");
-                    precio += 0.50;
+                    precio += 0.50f;
                 } else if(x == 1 && kebab.get(i).get(x) == 1){
                     texto.append("Ternera  ");
-                    precio += 1;
+                    precio += 1f;
                 } else if(x == 1 && kebab.get(i).get(x) == 2){
                     texto.append("Cordero  ");
-                    precio += 0.50;
+                    precio += 0.50f;
                 }
 
                 if(x == 2 && kebab.get(i).get(x) == 0 && kebab.get(i).get(3) != 0){
                     texto.append("Normal  *" + String.valueOf(kebab.get(i).get(3)));
                 } else if(x == 2 && kebab.get(i).get(x) == 1 && kebab.get(i).get(3) != 0){
                     texto.append("Completo  *" + String.valueOf(kebab.get(i).get(3)));
-                    precio += 1;
+                    precio += 1f;
                 }
             }
         }
@@ -82,22 +82,22 @@ public class ResumenPedido extends AppCompatActivity {
         for (int i = 0; i < bebidas.length; i++){
             if(bebidas[i] != 0 && i == 0){
                 texto.append("\nCola *" + bebidas[i]);
-                precio += bebidas[i];
+                precio += (float) bebidas[i];
             } else if (bebidas[i] != 0 && i == 1){
                 texto.append("\nLimon *" + bebidas[i]);
-                precio += bebidas[i];
+                precio +=(float)  bebidas[i];
             } else if (bebidas[i] != 0 && i == 2){
                 texto.append("\nNaranja *" + bebidas[i]);
-                precio += bebidas[i];
+                precio += (float) bebidas[i];
             } else if (bebidas[i] != 0 && i == 3){
                 texto.append("\nVino *" + bebidas[i]);
-                precio += 8 * bebidas[i];
+                precio += 8f * (float) bebidas[i];
             } else if (bebidas[i] != 0 && i == 4){
                 texto.append("\nCerveza *" + bebidas[i]);
-                precio += 1.50 * bebidas[i];
+                precio += 1.50f * (float) bebidas[i];
             } else if (bebidas[i] != 0 && i == 5){
                 texto.append("\nAgua *" + bebidas[i]);
-                precio += 0.50 * bebidas[i];
+                precio += 0.50f * (float) bebidas[i];
             }
         }
 
@@ -112,8 +112,8 @@ public class ResumenPedido extends AppCompatActivity {
         }
 
         texto.append("\n\n--Precio--");
-        texto.append("\nPrecio" + precio + "€");
-        texto.append("\nIVA" + precio * 0.21 + "€");
-        texto.append("\nTotal" + precio + precio * 0.21 + "€");
+        texto.append("\nPrecio: " + precio + "€");
+        texto.append("\nIVA: " + (precio * 0.21f) + "€");
+        texto.append("\nTotal: " +( precio + precio * 0.21f) + "€");
     }
 }
