@@ -39,7 +39,7 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\n--Kebab--");
 
         for(int i = 0; i < kebab.size(); i++){
-            for(int x = 0; x < kebab.get(i).get(x); x++) {
+            for(int x = 0; x < kebab.get(i).size(); x++) {
                 if (x == 0 && kebab.get(i).get(x) == 0) {
                     texto.append("\nDönner ");
                 } else if (x == 0 && kebab.get(i).get(x) == 1) {
