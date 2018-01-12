@@ -37,15 +37,10 @@ public class PedidoKebab extends AppCompatActivity {
                 t = (TableRow) tabla.getChildAt(i);
                 fila.clear();
 
-                System.out.println("Hijos tabla " + tabla.getChildCount());
-                System.out.println(fila.size());
-
                 for (int x = 0; x < t.getChildCount(); x++){
-                    System.out.println("Hijos fila " + t.getChildCount());
                     s = (Spinner) t.getChildAt(x);
                     fila.add(s.getSelectedItemPosition());
                 }
-                System.out.println(fila.size());
                 array_kebab.add(fila);
 
             }

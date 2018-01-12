@@ -28,8 +28,11 @@ public class DatosCliente extends AppCompatActivity {
             startActivity(intent);
 
 
+        } else if(telefono.getText().toString().length() != 9){
+            Toast toast = Toast.makeText(this, "El numero de telefono tiene que tener 9 caracteres.", Toast.LENGTH_SHORT);
+            toast.show();
         } else{
-            Toast toast = Toast.makeText(this, "Tienes que rellenar todos los campos.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "Tienes que llenar todos los campos.", Toast.LENGTH_SHORT);
             toast.show();
         }
 

@@ -126,4 +126,17 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\nIVA: " + (precio * 0.21f) + "€");
         texto.append("\nTotal: " +( precio + precio * 0.21f) + "€");
     }
+
+    public void enviar(View v){
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+        TextView texto = findViewById(R.id.editText);
+
+        sharingIntent.setType("text/plain");
+
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Pedido kebab");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, String.valueOf(texto.getText()));
+
+        startActivity(Intent.createChooser(sharingIntent, "Enviar por"));
+    }
 }
