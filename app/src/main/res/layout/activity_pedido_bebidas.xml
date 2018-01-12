@@ -36,8 +36,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="32dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/refesco_cola"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,15 +170,15 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="66dp"
+        android:layout_height="81dp"
         android:layout_marginBottom="3dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/cantidad_limon"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fanta limon" />
+        app:srcCompat="@drawable/fanta_limon" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -187,7 +186,7 @@
         android:layout_height="67dp"
         android:layout_marginBottom="31dp"
         android:layout_marginTop="31dp"
-        android:src="@drawable/fanta naranja"
+        android:src="@drawable/fanta_naranja"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintStart_toStartOf="@+id/cantidad_cola"
@@ -195,18 +194,18 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="68dp"
-        android:layout_height="67dp"
+        android:layout_width="76dp"
+        android:layout_height="89dp"
         android:layout_marginBottom="68dp"
         android:layout_marginEnd="140dp"
         android:layout_marginTop="68dp"
         android:src="@drawable/vino"
         app:layout_constraintBottom_toBottomOf="@+id/cantidad_vino"
         app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/cantidad_limon"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView8"
