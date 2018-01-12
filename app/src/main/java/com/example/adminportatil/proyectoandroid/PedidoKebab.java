@@ -31,7 +31,6 @@ public class PedidoKebab extends AppCompatActivity {
         ArrayList<ArrayList<Integer>> array_kebab = new ArrayList<>();
         ArrayList<Integer> fila = new ArrayList<>();
 
-            //ArrayList compuesto de arrays. Cada array contiene la informacion de una fila. (Por momento solo añade la primera fila)
 
             for (int i = 0; i < tabla.getChildCount(); i++) {
                 TableRow t = (TableRow) tabla.getChildAt(i);

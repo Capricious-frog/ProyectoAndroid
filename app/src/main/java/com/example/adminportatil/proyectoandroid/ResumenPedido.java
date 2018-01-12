@@ -37,7 +37,38 @@ public class ResumenPedido extends AppCompatActivity {
 
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
         texto.append("\n--Kebab--");
-        texto.append("\n--Bebidas--\n");
+
+        for(int i = 0; i < kebab.size(); i++){
+            for(int x = 0; x < kebab.get(i).get(x); x++) {
+                if (x == 0 && kebab.get(i).get(x) == 0) {
+                    texto.append("\nDönner ");
+                } else if (x == 0 && kebab.get(i).get(x) == 1) {
+                    texto.append("\nDürüm ");
+                } else if (x == 0 && kebab.get(i).get(x) == 2) {
+                    texto.append("\nLahmacum ");
+                } else if (x == 0 && kebab.get(i).get(x) == 3) {
+                    texto.append("\nShawarms ");
+                } else if (x == 0 && kebab.get(i).get(x) == 4) {
+                    texto.append("\nGyros ");
+                }
+
+                if(x == 1 && kebab.get(i).get(x) == 0) {
+                    texto.append("Pollo  ");
+                } else if(x == 1 && kebab.get(i).get(x) == 1){
+                    texto.append("Ternera  ");
+                } else if(x == 1 && kebab.get(i).get(x) == 2){
+                    texto.append("Cordero  ");
+                }
+
+                if(x == 2 && kebab.get(i).get(x) == 0){
+                    texto.append("Normal  *" + kebab.get(i).get(x));
+                } else if(x == 2 && kebab.get(i).get(x) == 1){
+                    texto.append("Completo  *" + kebab.get(i).get(x));
+                }
+            }
+        }
+
+        texto.append("\n\n--Bebidas--");
         for (int i = 0; i < bebidas.length; i++){
             if(bebidas[i] != 0 && i == 0){
                 texto.append("\nCola *" + bebidas[i]);
