@@ -1,10 +1,12 @@
 package com.example.adminportatil.proyectoandroid;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -23,13 +25,24 @@ public class PedidoKebab extends AppCompatActivity {
     }
 
     public void lanzarPedidoKebab(View view){
-        Spinner sp = findViewById(R.id.cantidad0);
 
-        if (sp.getSelectedItemPosition() != 0){
-            ArrayList<int[]> array_kebab = new ArrayList<>();
+        TableLayout tabla = findViewById(R.id.tablaKebabs);
+        Spinner s = null;
+        ArrayList<ArrayList<Integer>> array_kebab = new ArrayList<>();
+        ArrayList<Integer> fila = new ArrayList<>();
 
             //ArrayList compuesto de arrays. Cada array contiene la informacion de una fila. (Por momento solo añade la primera fila)
-            array_kebab.add(new int[]{kebab.getSelectedItemPosition(), carne.getSelectedItemPosition() , tamano.getSelectedItemPosition(), cantidad.getSelectedItemPosition()});
+
+            for (int i = 0; i < tabla.getChildCount(); i++) {
+                TableRow t = (TableRow) tabla.getChildAt(i);
+
+                for (int x = 0; x < t.getChildCount(); x++){
+                    s = (Spinner) t.getChildAt(x);
+                    fila.add(s.getSelectedItemPosition());
+                }
+                array_kebab.add(fila);
+
+            }
 
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
             intent.putExtra("nombre", nom);
@@ -39,10 +52,6 @@ public class PedidoKebab extends AppCompatActivity {
             intent.putExtra("kebab", array_kebab);
 
             startActivity(intent);
-        } else {
-            Toast toast = Toast.makeText(this, "Tienes que seleccionar al menos un producto.", Toast.LENGTH_SHORT);
-            toast.show();
-        }
     }
 
     public void anadir_fila(View v) {

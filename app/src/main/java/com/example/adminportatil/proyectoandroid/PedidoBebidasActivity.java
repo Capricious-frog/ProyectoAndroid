@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class PedidoBebidasActivity extends AppCompatActivity {
     String nom, ap, telf, email;
-    ArrayList<int[]> kebab;
+    ArrayList<ArrayList<Integer>> kebab;
 
     public void cerrar(View v){
         finish();
@@ -50,6 +50,6 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         ap = intent.getStringExtra("apellido");
         telf = intent.getStringExtra("telefono");
         email = intent.getStringExtra("email");
-        kebab = (ArrayList<int[]>) intent.getSerializableExtra("kebab");
+        kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
     }
 }
