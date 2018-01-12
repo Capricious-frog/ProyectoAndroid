@@ -18,7 +18,7 @@ public class Portada extends AppCompatActivity {
             public void run() {
                 startActivity(new Intent(getApplicationContext(), DatosCliente.class));
             }
-        }, 5000);
+        }, 3000);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada);
