@@ -93,5 +93,6 @@ public class PedidoKebab extends AppCompatActivity {
         ap = intent.getStringExtra("apellido");
         telf = intent.getStringExtra("telefono");
         email = intent.getStringExtra("email");
+
     }
 }
