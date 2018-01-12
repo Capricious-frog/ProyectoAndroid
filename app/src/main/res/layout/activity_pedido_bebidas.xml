@@ -36,66 +36,67 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="90dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/refesco_cola"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="86dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginTop="82dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/refresco_limon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="127dp"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="126dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/refresco_naranja"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toTopOf="@+id/cantidad_cola" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="252dp"
+        android:layout_marginTop="2dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/vino"
-        app:layout_constraintEnd_toEndOf="@+id/cantidad_limon"
-        app:layout_constraintStart_toStartOf="@+id/cantidad_limon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="27dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/cerveza"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="128dp"
         android:background="@android:drawable/editbox_background_normal"
         android:text="@string/agua"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imageView9" />
 
     <Spinner
         android:id="@+id/cantidad_cola"
@@ -112,28 +113,28 @@
         android:id="@+id/cantidad_limon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
         android:background="@android:drawable/editbox_background_normal"
         android:entries="@array/cantidad"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <Spinner
         android:id="@+id/cantidad_naranja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="31dp"
         android:background="@android:drawable/editbox_background_normal"
         android:entries="@array/cantidad"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Spinner
         android:id="@+id/cantidad_vino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="16dp"
         android:background="@android:drawable/editbox_background_normal"
         android:entries="@array/cantidad"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -143,16 +144,17 @@
         android:id="@+id/cantidad_cerveza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
+        android:layout_marginEnd="23dp"
         android:background="@android:drawable/editbox_background_normal"
         android:entries="@array/cantidad"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Spinner
         android:id="@+id/cantidad_agua"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:background="@android:drawable/editbox_background_normal"
         android:entries="@array/cantidad"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -162,73 +164,81 @@
         android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="9dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/pepsi"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/cantidad_cola"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" android:contentDescription="@string/todo" />
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="66dp"
-        android:layout_height="81dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
-        app:layout_constraintStart_toStartOf="@+id/cantidad_limon"
+        android:layout_width="212dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fanta_limon" android:contentDescription="@string/todo" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/fanta_limon" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="0dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="31dp"
-        android:layout_marginTop="31dp"
+        android:layout_height="83dp"
+        android:layout_marginBottom="158dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="158dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/fanta_naranja"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintStart_toStartOf="@+id/cantidad_cola"
-        app:layout_constraintTop_toBottomOf="@+id/cantidad_cola" android:contentDescription="@string/todo" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="76dp"
-        android:layout_height="89dp"
-        android:layout_marginBottom="68dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="3dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/vino"
-        app:layout_constraintBottom_toBottomOf="@+id/cantidad_vino"
-        app:layout_constraintEnd_toEndOf="@+id/imageView9"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/cantidad_limon"
-        app:layout_constraintVertical_bias="1.0" android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toBottomOf="@+id/cantidad_cola" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="0dp"
+        android:layout_width="116dp"
         android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/cerveza"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView9" android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toBottomOf="@+id/cantidad_naranja" />
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="66dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="157dp"
-        android:layout_marginTop="158dp"
+        android:layout_width="86dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginStart="72dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/agua"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/cantidad_vino"
-        app:layout_constraintTop_toTopOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.0" android:contentDescription="@string/todo" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/cantidad_vino" />
 
 </android.support.constraint.ConstraintLayout>
