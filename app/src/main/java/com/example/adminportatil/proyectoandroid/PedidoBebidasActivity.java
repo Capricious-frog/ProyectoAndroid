@@ -25,6 +25,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         Spinner cerveza = findViewById(R.id.cantidad_cerveza);
         Spinner agua = findViewById(R.id.cantidad_agua);
 
+        //Mete en un array los valores seleccionados de todos los spinners
         int[] bebidas = {cola.getSelectedItemPosition(), limon.getSelectedItemPosition(), naranja.getSelectedItemPosition(), vino.getSelectedItemPosition(), cerveza.getSelectedItemPosition(), agua.getSelectedItemPosition()};
 
         Intent intent = new Intent(this, ResumenPedido.class);

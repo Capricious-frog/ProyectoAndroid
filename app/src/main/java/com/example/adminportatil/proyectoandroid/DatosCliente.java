@@ -17,6 +17,7 @@ public class DatosCliente extends AppCompatActivity {
 
     public void lanzarPedidoKebab(View view){
 
+        //Validacion de datos
         if(!nombre.getText().toString().isEmpty() || !direccion.getText().toString().isEmpty() || !telefono.getText().toString().isEmpty() || !email.getText().toString().isEmpty()){
 
             Intent intent = new Intent(this, PedidoKebab.class);
@@ -27,7 +28,9 @@ public class DatosCliente extends AppCompatActivity {
 
             startActivity(intent);
 
-        } else if(telefono.getText().toString().length() != 9){
+        }
+
+        if(telefono.getText().toString().length() != 9){
             Toast toast = Toast.makeText(this, "El numero de telefono tiene que tener 9 caracteres.", Toast.LENGTH_SHORT);
             toast.show();
         } else{
@@ -42,6 +45,7 @@ public class DatosCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_cliente);
 
+        //Recibe los intent para pasarlos
         nombre = findViewById(R.id.nombre);
         direccion = findViewById(R.id.direccion);
         telefono = findViewById(R.id.telefono);

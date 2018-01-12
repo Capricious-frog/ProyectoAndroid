@@ -32,27 +32,28 @@ public class PedidoKebab extends AppCompatActivity {
         ArrayList<ArrayList<Integer>> array_kebab = new ArrayList<>();
         ArrayList<Integer> fila = new ArrayList<>();
 
+        //Guarda los datos de la fila en un arraylist y luego mete este array en otro arraylist
+        //El arraylist fila representa las filas y el arraylist array_kebab representa la tabla
+        for (int i = 0; i < tabla.getChildCount(); i++) {
+            t = (TableRow) tabla.getChildAt(i);
+            fila.clear();
 
-            for (int i = 0; i < tabla.getChildCount(); i++) {
-                t = (TableRow) tabla.getChildAt(i);
-                fila.clear();
-
-                for (int x = 0; x < t.getChildCount(); x++){
+            for (int x = 0; x < t.getChildCount(); x++){
                     s = (Spinner) t.getChildAt(x);
                     fila.add(s.getSelectedItemPosition());
-                }
-                array_kebab.add(fila);
-
             }
+            array_kebab.add(fila);
 
-            Intent intent = new Intent(this, PedidoBebidasActivity.class);
-            intent.putExtra("nombre", nom);
-            intent.putExtra("apellido", ap);
-            intent.putExtra("telefono", telf);
-            intent.putExtra("email", email);
-            intent.putExtra("kebab", array_kebab);
+        }
 
-            startActivity(intent);
+        Intent intent = new Intent(this, PedidoBebidasActivity.class);
+        intent.putExtra("nombre", nom);
+        intent.putExtra("apellido", ap);
+        intent.putExtra("telefono", telf);
+        intent.putExtra("email", email);
+        intent.putExtra("kebab", array_kebab);
+
+        startActivity(intent);
     }
 
     public void anadir_fila(View v) {
@@ -63,6 +64,7 @@ public class PedidoKebab extends AppCompatActivity {
 
             TableLayout tl = findViewById(R.id.tablaKebabs);
 
+            //Crea un nuevo tableRow y luego lo rellena con la actividad fila_kebab
             LayoutInflater inflator = PedidoKebab.this.getLayoutInflater();
             TableRow rowView = new TableRow(v.getContext());
             inflator.inflate(R.layout.fila_kebab, rowView);
@@ -70,6 +72,7 @@ public class PedidoKebab extends AppCompatActivity {
 
         } else {
             try{
+                //Si ya hay un toast en pantalla no te deja añadir otro
                  toast.getView().isShown();
             } catch (Exception e) {
                 System.out.println("Ya hay un toast en pantalla.");

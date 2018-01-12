@@ -41,14 +41,14 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
         texto.append("\n\n--Kebab--");
 
+        //Navega por los arrays para conseguir la informacion de las filas y luego las muestra en el edit text
+        //Hace algo similar con las bebidas
+        //Por alguna razon el array sale de pedido kebab con valores pero al llegar aqui todos los valores son 0
+        //Esa es la razon por la que no se muestra correctamente
         for(int i = 0; i < kebab.size(); i++){
             for(int x = 0; x < kebab.get(i).size(); x++) {
                 ArrayList<Integer> fila = new ArrayList<> (kebab.get(i));
 
-                System.out.println(fila.get(0));
-                System.out.println(fila.get(1));
-                System.out.println(fila.get(2));
-                System.out.println(fila.get(3));
 
                 if (x == 0 && fila.get(x) == 0) {
                     texto.append("\nDönner ");
@@ -128,6 +128,7 @@ public class ResumenPedido extends AppCompatActivity {
     }
 
     public void enviar(View v){
+        //Esto es el codigo que permite compartir el contenido del editText
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 
         TextView texto = findViewById(R.id.editText);
