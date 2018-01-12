@@ -69,10 +69,10 @@ public class ResumenPedido extends AppCompatActivity {
                     precio += 0.50;
                 }
 
-                if(x == 2 && kebab.get(i).get(x) == 0 && kebab.get(i).get(x + 1) != 0){
-                    texto.append("Normal  *" + String.valueOf(kebab.get(i).get(x + 1)));
-                } else if(x == 2 && kebab.get(i).get(x) == 1 && kebab.get(i).get(x + 1) != 0){
-                    texto.append("Completo  *" + String.valueOf(kebab.get(i).get(x + 1)));
+                if(x == 2 && kebab.get(i).get(x) == 0 && kebab.get(i).get(3) != 0){
+                    texto.append("Normal  *" + String.valueOf(kebab.get(i).get(3)));
+                } else if(x == 2 && kebab.get(i).get(x) == 1 && kebab.get(i).get(3) != 0){
+                    texto.append("Completo  *" + String.valueOf(kebab.get(i).get(3)));
                     precio += 1;
                 }
             }
