@@ -12,6 +12,7 @@ public class ResumenPedido extends AppCompatActivity {
     String nom, ap, telf, email;
     ArrayList<ArrayList<Integer>> kebab;
     int[] bebidas;
+    float precio = 0;
 
     public void cerrar(View v){
         finish();
@@ -36,34 +37,43 @@ public class ResumenPedido extends AppCompatActivity {
         bebidas = intent.getIntArrayExtra("bebidas");
 
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
-        texto.append("\n--Kebab--");
+        texto.append("\n\n--Kebab--");
 
         for(int i = 0; i < kebab.size(); i++){
             for(int x = 0; x < kebab.get(i).size(); x++) {
                 if (x == 0 && kebab.get(i).get(x) == 0) {
                     texto.append("\nDönner ");
+                    precio += 4 *  kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 1) {
                     texto.append("\nDürüm ");
+                    precio += 4.50 *  kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 2) {
                     texto.append("\nLahmacum ");
+                    precio += 5 *  kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 3) {
                     texto.append("\nShawarms ");
+                    precio += 4.50 *  kebab.get(i).get(3);
                 } else if (x == 0 && kebab.get(i).get(x) == 4) {
                     texto.append("\nGyros ");
+                    precio += 5 *  kebab.get(i).get(3);
                 }
 
                 if(x == 1 && kebab.get(i).get(x) == 0) {
                     texto.append("Pollo  ");
+                    precio += 0.50;
                 } else if(x == 1 && kebab.get(i).get(x) == 1){
                     texto.append("Ternera  ");
+                    precio += 1;
                 } else if(x == 1 && kebab.get(i).get(x) == 2){
                     texto.append("Cordero  ");
+                    precio += 0.50;
                 }
 
-                if(x == 2 && kebab.get(i).get(x) == 0){
-                    texto.append("Normal  *" + kebab.get(i).get(x));
-                } else if(x == 2 && kebab.get(i).get(x) == 1){
-                    texto.append("Completo  *" + kebab.get(i).get(x));
+                if(x == 2 && kebab.get(i).get(x) == 0 && kebab.get(i).get(x + 1) != 0){
+                    texto.append("Normal  *" + String.valueOf(kebab.get(i).get(x + 1)));
+                } else if(x == 2 && kebab.get(i).get(x) == 1 && kebab.get(i).get(x + 1) != 0){
+                    texto.append("Completo  *" + String.valueOf(kebab.get(i).get(x + 1)));
+                    precio += 1;
                 }
             }
         }
@@ -72,24 +82,38 @@ public class ResumenPedido extends AppCompatActivity {
         for (int i = 0; i < bebidas.length; i++){
             if(bebidas[i] != 0 && i == 0){
                 texto.append("\nCola *" + bebidas[i]);
+                precio += bebidas[i];
             } else if (bebidas[i] != 0 && i == 1){
                 texto.append("\nLimon *" + bebidas[i]);
+                precio += bebidas[i];
             } else if (bebidas[i] != 0 && i == 2){
                 texto.append("\nNaranja *" + bebidas[i]);
+                precio += bebidas[i];
             } else if (bebidas[i] != 0 && i == 3){
                 texto.append("\nVino *" + bebidas[i]);
+                precio += 8 * bebidas[i];
             } else if (bebidas[i] != 0 && i == 4){
                 texto.append("\nCerveza *" + bebidas[i]);
+                precio += 1.50 * bebidas[i];
             } else if (bebidas[i] != 0 && i == 5){
                 texto.append("\nAgua *" + bebidas[i]);
+                precio += 0.50 * bebidas[i];
             }
         }
 
-        texto.append("\n--Regalo--");
+        texto.append("\n\n--Regalo--");
 
-        System.out.println(nom);
-        System.out.println(ap);
-        System.out.println(telf);
-        System.out.println(email);
+        if(precio > 15) {
+            texto.append("\nPeluche de android");
+        }
+
+        if (precio > 20) {
+            texto.append("\nVale para el comedor de Cebanc");
+        }
+
+        texto.append("\n\n--Precio--");
+        texto.append("\nPrecio" + precio + "€");
+        texto.append("\nIVA" + precio * 0.21 + "€");
+        texto.append("\nTotal" + precio + precio * 0.21 + "€");
     }
 }
