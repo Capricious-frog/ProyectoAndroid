@@ -36,43 +36,53 @@ public class ResumenPedido extends AppCompatActivity {
         kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
         bebidas = intent.getIntArrayExtra("bebidas");
 
+
+
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
         texto.append("\n\n--Kebab--");
 
         for(int i = 0; i < kebab.size(); i++){
             for(int x = 0; x < kebab.get(i).size(); x++) {
-                if (x == 0 && kebab.get(i).get(x) == 0) {
+                ArrayList<Integer> fila = new ArrayList<> (kebab.get(i));
+
+                System.out.println(fila.get(0));
+                System.out.println(fila.get(1));
+                System.out.println(fila.get(2));
+                System.out.println(fila.get(3));
+
+                if (x == 0 && fila.get(x) == 0) {
                     texto.append("\nDönner ");
-                    precio += 4f * (float) kebab.get(i).get(3);
-                } else if (x == 0 && kebab.get(i).get(x) == 1) {
+
+                    precio += 4f * (float) fila.get(3);
+                } else if (x == 0 && fila.get(x) == 1) {
                     texto.append("\nDürüm ");
-                    precio += 4.50f * (float) kebab.get(i).get(3);
-                } else if (x == 0 && kebab.get(i).get(x) == 2) {
+                    precio += 4.50f * (float) fila.get(3);
+                } else if (x == 0 && fila.get(x) == 2) {
                     texto.append("\nLahmacum ");
-                    precio += 5f * (float) kebab.get(i).get(3);
-                } else if (x == 0 && kebab.get(i).get(x) == 3) {
+                    precio += 5f * (float)fila.get(3);
+                } else if (x == 0 && fila.get(x) == 3) {
                     texto.append("\nShawarms ");
-                    precio += 4.50f * (float) kebab.get(i).get(3);
-                } else if (x == 0 && kebab.get(i).get(x) == 4) {
+                    precio += 4.50f * (float)fila.get(3);
+                } else if (x == 0 && fila.get(x) == 4) {
                     texto.append("\nGyros ");
-                    precio += 5f * (float) kebab.get(i).get(3);
+                    precio += 5f * (float) fila.get(3);
                 }
 
-                if(x == 1 && kebab.get(i).get(x) == 0) {
+                if(x == 1 && fila.get(x) == 0) {
                     texto.append("Pollo  ");
                     precio += 0.50f;
-                } else if(x == 1 && kebab.get(i).get(x) == 1){
+                } else if(x == 1 && fila.get(x) == 1){
                     texto.append("Ternera  ");
                     precio += 1f;
-                } else if(x == 1 && kebab.get(i).get(x) == 2){
+                } else if(x == 1 && fila.get(x) == 2){
                     texto.append("Cordero  ");
                     precio += 0.50f;
                 }
 
-                if(x == 2 && kebab.get(i).get(x) == 0 && kebab.get(i).get(3) != 0){
-                    texto.append("Normal  *" + String.valueOf(kebab.get(i).get(3)));
-                } else if(x == 2 && kebab.get(i).get(x) == 1 && kebab.get(i).get(3) != 0){
-                    texto.append("Completo  *" + String.valueOf(kebab.get(i).get(3)));
+                if(x == 2 &&fila.get(x) == 0 && fila.get(3) != 0){
+                    texto.append("Normal  *" + String.valueOf(fila.get(3)));
+                } else if(x == 2 && fila.get(x) == 1 && fila.get(3) != 0){
+                    texto.append("Completo  *" + String.valueOf(fila.get(3)));
                     precio += 1f;
                 }
             }
