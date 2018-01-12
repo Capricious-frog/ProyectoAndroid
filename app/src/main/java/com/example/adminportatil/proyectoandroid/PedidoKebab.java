@@ -27,18 +27,25 @@ public class PedidoKebab extends AppCompatActivity {
     public void lanzarPedidoKebab(View view){
 
         TableLayout tabla = findViewById(R.id.tablaKebabs);
-        Spinner s = null;
+        Spinner s;
+        TableRow t;
         ArrayList<ArrayList<Integer>> array_kebab = new ArrayList<>();
         ArrayList<Integer> fila = new ArrayList<>();
 
 
             for (int i = 0; i < tabla.getChildCount(); i++) {
-                TableRow t = (TableRow) tabla.getChildAt(i);
+                t = (TableRow) tabla.getChildAt(i);
+                fila.clear();
+
+                System.out.println("Hijos tabla " + tabla.getChildCount());
+                System.out.println(fila.size());
 
                 for (int x = 0; x < t.getChildCount(); x++){
+                    System.out.println("Hijos fila " + t.getChildCount());
                     s = (Spinner) t.getChildAt(x);
                     fila.add(s.getSelectedItemPosition());
                 }
+                System.out.println(fila.size());
                 array_kebab.add(fila);
 
             }
