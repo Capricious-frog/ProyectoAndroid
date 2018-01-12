@@ -21,6 +21,12 @@
     <string name="agua">Agua</string>
     <string name="textview">TextView</string>
     <string name="enviar">enviar</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>

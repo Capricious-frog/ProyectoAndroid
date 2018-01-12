@@ -55,7 +55,6 @@
         android:background="#00FFFFFF">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -77,6 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tipo_kebab"
                         tools:layout_editor_absoluteX="16dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -87,6 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tipo_carne"
                         tools:layout_editor_absoluteX="123dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -97,6 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tamaño"
                         tools:layout_editor_absoluteX="206dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -108,6 +110,7 @@
                         android:layout_marginEnd="3dp"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/cantidad"
                         tools:layout_editor_absoluteX="289dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -124,6 +127,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tipo_kebab"
                         tools:layout_editor_absoluteX="16dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -134,6 +138,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tipo_carne"
                         tools:layout_editor_absoluteX="123dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -144,6 +149,7 @@
                         android:layout_height="30dp"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/tamaño"
                         tools:layout_editor_absoluteX="206dp"
                         tools:layout_editor_absoluteY="36dp" />
@@ -155,6 +161,7 @@
                         android:layout_marginEnd="3dp"
                         android:layout_marginStart="3dp"
                         android:layout_marginTop="3dp"
+                        android:background="@android:drawable/editbox_background_normal"
                         android:entries="@array/cantidad"
                         tools:layout_editor_absoluteX="289dp"
                         tools:layout_editor_absoluteY="36dp" />
