@@ -63,7 +63,7 @@ public class PedidoKebab extends AppCompatActivity {
 
         //Comprueba si al menos hay un spinner de la cantidad de kebabs que sea mayor que 0
         for (int i = 0; i < array_kebab.size(); i++){
-            if(array_kebab.get(0).get(3) != 0){
+            if(array_kebab.get(i).get(3) != 0){
                 contador++;
             }
         }
