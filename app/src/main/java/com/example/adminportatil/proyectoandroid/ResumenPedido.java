@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ResumenPedido extends AppCompatActivity {
@@ -24,6 +25,8 @@ public class ResumenPedido extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumen_pedido);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
@@ -136,9 +139,9 @@ public class ResumenPedido extends AppCompatActivity {
 
 
         texto.append("\n\n--Precio--");
-        texto.append("\nPrecio neto: " + precio + "€");
-        texto.append("\nIVA: " + (precio * 0.21f) + "€");
-        texto.append("\n\nTotal: " +( precio + precio * 0.21f) + "€");
+        texto.append("\nPrecio neto: " + decimalFormat.format(precio) + "€");
+        texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
+        texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
     }
 
     public void enviar(View v){
