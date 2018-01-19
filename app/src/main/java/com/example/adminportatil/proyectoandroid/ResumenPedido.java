@@ -12,6 +12,7 @@ public class ResumenPedido extends AppCompatActivity {
     String nom, ap, telf, email;
     ArrayList<ArrayList<Integer>> kebab;
     int[] bebidas;
+    int contador = 0;
     float precio = 0;
 
     public void cerrar(View v){
@@ -92,22 +93,32 @@ public class ResumenPedido extends AppCompatActivity {
             if(bebidas[i] != 0 && i == 0){
                 texto.append("\nCola *" + bebidas[i]);
                 precio += (float) bebidas[i];
+                contador++;
             } else if (bebidas[i] != 0 && i == 1){
                 texto.append("\nLimon *" + bebidas[i]);
                 precio +=(float)  bebidas[i];
+                contador++;
             } else if (bebidas[i] != 0 && i == 2){
                 texto.append("\nNaranja *" + bebidas[i]);
                 precio += (float) bebidas[i];
+                contador++;
             } else if (bebidas[i] != 0 && i == 3){
                 texto.append("\nVino *" + bebidas[i]);
                 precio += 8f * (float) bebidas[i];
+                contador++;
             } else if (bebidas[i] != 0 && i == 4){
                 texto.append("\nCerveza *" + bebidas[i]);
                 precio += 1.50f * (float) bebidas[i];
+                contador++;
             } else if (bebidas[i] != 0 && i == 5){
                 texto.append("\nAgua *" + bebidas[i]);
                 precio += 0.50f * (float) bebidas[i];
+                contador++;
             }
+        }
+
+        if (contador == 0){
+            texto.append("\nNada");
         }
 
         texto.append("\n\n--Regalo--");
@@ -115,7 +126,6 @@ public class ResumenPedido extends AppCompatActivity {
         if(precio > 15) {
             texto.append("\nPeluche de android");
         } else {
-
             texto.append("\nNada");
 
         }
@@ -126,9 +136,9 @@ public class ResumenPedido extends AppCompatActivity {
 
 
         texto.append("\n\n--Precio--");
-        texto.append("\nPrecio: " + precio + "€");
+        texto.append("\nPrecio neto: " + precio + "€");
         texto.append("\nIVA: " + (precio * 0.21f) + "€");
-        texto.append("\nTotal: " +( precio + precio * 0.21f) + "€");
+        texto.append("\n\nTotal: " +( precio + precio * 0.21f) + "€");
     }
 
     public void enviar(View v){
