@@ -37,7 +37,6 @@ public class ResumenPedido extends AppCompatActivity {
         bebidas = intent.getIntArrayExtra("bebidas");
 
 
-
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
         texto.append("\n\n--Kebab--");
 
@@ -50,38 +49,38 @@ public class ResumenPedido extends AppCompatActivity {
                 ArrayList<Integer> fila = new ArrayList<> (kebab.get(i));
 
 
-                if (x == 0 && fila.get(x) == 0) {
+                if (x == 0 && fila.get(x) == 0 && fila.get(3) != 0) {
                     texto.append("\nDönner ");
 
                     precio += 4f * (float) fila.get(3);
-                } else if (x == 0 && fila.get(x) == 1) {
+                } else if (x == 0 && fila.get(x) == 1 && fila.get(3) != 0) {
                     texto.append("\nDürüm ");
                     precio += 4.50f * (float) fila.get(3);
-                } else if (x == 0 && fila.get(x) == 2) {
+                } else if (x == 0 && fila.get(x) == 2 && fila.get(3) != 0) {
                     texto.append("\nLahmacum ");
                     precio += 5f * (float)fila.get(3);
-                } else if (x == 0 && fila.get(x) == 3) {
+                } else if (x == 0 && fila.get(x) == 3 && fila.get(3) != 0) {
                     texto.append("\nShawarms ");
                     precio += 4.50f * (float)fila.get(3);
-                } else if (x == 0 && fila.get(x) == 4) {
+                } else if (x == 0 && fila.get(x) == 4 && fila.get(3) != 0) {
                     texto.append("\nGyros ");
                     precio += 5f * (float) fila.get(3);
                 }
 
-                if(x == 1 && fila.get(x) == 0) {
+                if(x == 1 && fila.get(x) == 0 && fila.get(3) != 0) {
                     texto.append("Pollo  ");
                     precio += 0.50f;
-                } else if(x == 1 && fila.get(x) == 1){
+                } else if(x == 1 && fila.get(x) == 1 && fila.get(3) != 0){
                     texto.append("Ternera  ");
                     precio += 1f;
-                } else if(x == 1 && fila.get(x) == 2){
+                } else if(x == 1 && fila.get(x) == 2 && fila.get(3) != 0){
                     texto.append("Cordero  ");
                     precio += 0.50f;
                 }
 
-                if(x == 2 &&fila.get(x) == 0 && fila.get(3) != 0){
+                if(x == 2 &&fila.get(x) == 0 && fila.get(3) != 0 && fila.get(3) != 0){
                     texto.append("Normal  *" + String.valueOf(fila.get(3)));
-                } else if(x == 2 && fila.get(x) == 1 && fila.get(3) != 0){
+                } else if(x == 2 && fila.get(x) == 1 && fila.get(3) != 0 && fila.get(3) != 0){
                     texto.append("Completo  *" + String.valueOf(fila.get(3)));
                     precio += 1f;
                 }
@@ -115,11 +114,16 @@ public class ResumenPedido extends AppCompatActivity {
 
         if(precio > 15) {
             texto.append("\nPeluche de android");
+        } else {
+
+            texto.append("\nNada");
+
         }
 
         if (precio > 20) {
             texto.append("\nVale para el comedor de Cebanc");
         }
+
 
         texto.append("\n\n--Precio--");
         texto.append("\nPrecio: " + precio + "€");
@@ -128,7 +132,7 @@ public class ResumenPedido extends AppCompatActivity {
     }
 
     public void enviar(View v){
-        //Esto es el codigo que permite compartir el contenido del editText
+        //Este es el codigo que permite compartir el contenido del editText
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 
         TextView texto = findViewById(R.id.editText);

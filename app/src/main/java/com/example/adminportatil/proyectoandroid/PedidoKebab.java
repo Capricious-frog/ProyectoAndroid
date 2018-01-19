@@ -30,30 +30,47 @@ public class PedidoKebab extends AppCompatActivity {
         Spinner s;
         TableRow t;
         ArrayList<ArrayList<Integer>> array_kebab = new ArrayList<>();
-        ArrayList<Integer> fila = new ArrayList<>();
 
         //Guarda los datos de la fila en un arraylist y luego mete este array en otro arraylist
         //El arraylist fila representa las filas y el arraylist array_kebab representa la tabla
         for (int i = 0; i < tabla.getChildCount(); i++) {
             t = (TableRow) tabla.getChildAt(i);
-            fila.clear();
+            array_kebab.add(new ArrayList<Integer>());
 
             for (int x = 0; x < t.getChildCount(); x++){
                     s = (Spinner) t.getChildAt(x);
-                    fila.add(s.getSelectedItemPosition());
+                    array_kebab.get(i).add(x, s.getSelectedItemPosition());
             }
-            array_kebab.add(fila);
 
         }
 
-        Intent intent = new Intent(this, PedidoBebidasActivity.class);
-        intent.putExtra("nombre", nom);
-        intent.putExtra("apellido", ap);
-        intent.putExtra("telefono", telf);
-        intent.putExtra("email", email);
-        intent.putExtra("kebab", array_kebab);
+        if(!validaKebab(array_kebab)) {
 
-        startActivity(intent);
+            Intent intent = new Intent(this, PedidoBebidasActivity.class);
+            intent.putExtra("nombre", nom);
+            intent.putExtra("apellido", ap);
+            intent.putExtra("telefono", telf);
+            intent.putExtra("email", email);
+            intent.putExtra("kebab", array_kebab);
+
+            startActivity(intent);
+        } else {
+            Toast toast = Toast.makeText(this, "Tienes que pedir al menos un kebab", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+    }
+
+    public boolean validaKebab(ArrayList<ArrayList<Integer>> array_kebab){
+        int contador = 0;
+
+        //Comprueba si al menos hay un spinner de la cantidad de kebabs que sea mayor que 0
+        for (int i = 0; i < array_kebab.size(); i++){
+            if(array_kebab.get(0).get(3) != 0){
+                contador++;
+            }
+        }
+
+        return contador == 0 ;
     }
 
     public void anadir_fila(View v) {
