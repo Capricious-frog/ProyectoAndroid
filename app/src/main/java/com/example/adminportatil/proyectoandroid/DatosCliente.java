@@ -20,20 +20,20 @@ public class DatosCliente extends AppCompatActivity {
         //Validacion de datos
         if(!nombre.getText().toString().isEmpty() || !direccion.getText().toString().isEmpty() || !telefono.getText().toString().isEmpty() || !email.getText().toString().isEmpty()){
 
-            Intent intent = new Intent(this, PedidoKebab.class);
-            intent.putExtra("nombre", nombre.getText().toString());
-            intent.putExtra("apellido", direccion.getText().toString());
-            intent.putExtra("telefono", telefono.getText().toString());
-            intent.putExtra("email", email.getText().toString());
+            if(telefono.getText().toString().length() != 9){
+                Toast toast = Toast.makeText(this, "El numero de telefono tiene que tener 9 caracteres.", Toast.LENGTH_SHORT);
+                toast.show();
+            } else {
+                Intent intent = new Intent(this, PedidoKebab.class);
+                intent.putExtra("nombre", nombre.getText().toString());
+                intent.putExtra("apellido", direccion.getText().toString());
+                intent.putExtra("telefono", telefono.getText().toString());
+                intent.putExtra("email", email.getText().toString());
 
-            startActivity(intent);
+                startActivity(intent);
+            }
 
-        }
-
-        if(telefono.getText().toString().length() != 9){
-            Toast toast = Toast.makeText(this, "El numero de telefono tiene que tener 9 caracteres.", Toast.LENGTH_SHORT);
-            toast.show();
-        } else{
+        } else {
             Toast toast = Toast.makeText(this, "Tienes que llenar todos los campos.", Toast.LENGTH_SHORT);
             toast.show();
         }
