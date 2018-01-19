@@ -59,16 +59,13 @@ public class PedidoKebab extends AppCompatActivity {
     }
 
     public boolean validaKebab(ArrayList<ArrayList<Integer>> array_kebab){
-        int contador = 0;
 
         //Comprueba si al menos hay un spinner de la cantidad de kebabs que sea mayor que 0
         for (int i = 0; i < array_kebab.size(); i++){
-            if(array_kebab.get(i).get(3) != 0){
-                contador++;
-            }
+                return array_kebab.get(i).get(3) != 0;
         }
 
-        return contador == 0 ;
+        return false ;
     }
 
     public void anadir_fila(View v) {
