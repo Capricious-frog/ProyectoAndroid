@@ -16,11 +16,6 @@ public class ResumenPedido extends AppCompatActivity {
     int contador = 0;
     float precio = 0;
 
-    public void cerrar(View v){
-        finish();
-        System.exit(0);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +35,9 @@ public class ResumenPedido extends AppCompatActivity {
         kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
         bebidas = intent.getIntArrayExtra("bebidas");
 
-
         texto.append("Nombre: " + nom + "\nApellido: " + ap);
         texto.append("\n\n--Kebab--");
+
 
         //Navega por los arrays para conseguir la informacion de las filas y luego las muestra en el edit text
         //Hace algo similar con las bebidas
@@ -157,4 +152,10 @@ public class ResumenPedido extends AppCompatActivity {
 
         startActivity(Intent.createChooser(sharingIntent, "Enviar por"));
     }
+
+    public void cerrar(View v){
+        finish();
+        System.exit(0);
+    }
+
 }

@@ -15,11 +15,19 @@ public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
     String nom, ap, telf, email;
-    Spinner kebab, carne, tamano, cantidad;
 
-    public void cerrar(View v){
-        finish();
-        System.exit(0);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pedido_kebab);
+
+        Intent intent = getIntent();
+
+        nom = intent.getStringExtra("nombre");
+        ap = intent.getStringExtra("apellido");
+        telf = intent.getStringExtra("telefono");
+        email = intent.getStringExtra("email");
+
     }
 
     public void lanzarPedidoKebab(View view){
@@ -97,22 +105,9 @@ public class PedidoKebab extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_kebab);
-
-        kebab = findViewById(R.id.tipo_kebab0);
-        carne = findViewById(R.id.tipo_carne0);
-        tamano = findViewById(R.id.tamano0);
-        cantidad = findViewById(R.id.cantidad0);
-
-        Intent intent = getIntent();
-
-        nom = intent.getStringExtra("nombre");
-        ap = intent.getStringExtra("apellido");
-        telf = intent.getStringExtra("telefono");
-        email = intent.getStringExtra("email");
-
+    public void cerrar(View v){
+        finish();
+        System.exit(0);
     }
+
 }

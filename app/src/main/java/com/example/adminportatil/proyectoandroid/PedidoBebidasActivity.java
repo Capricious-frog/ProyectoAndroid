@@ -12,9 +12,18 @@ public class PedidoBebidasActivity extends AppCompatActivity {
     String nom, ap, telf, email;
     ArrayList<ArrayList<Integer>> kebab;
 
-    public void cerrar(View v){
-        finish();
-        System.exit(0);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pedido_bebidas);
+
+        Intent intent = getIntent();
+
+        nom = intent.getStringExtra("nombre");
+        ap = intent.getStringExtra("apellido");
+        telf = intent.getStringExtra("telefono");
+        email = intent.getStringExtra("email");
+        kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
     }
 
     public void lanzarResumentPedido(View view){
@@ -40,17 +49,9 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pedido_bebidas);
-
-        Intent intent = getIntent();
-
-        nom = intent.getStringExtra("nombre");
-        ap = intent.getStringExtra("apellido");
-        telf = intent.getStringExtra("telefono");
-        email = intent.getStringExtra("email");
-        kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
+    public void cerrar(View v){
+        finish();
+        System.exit(0);
     }
+
 }

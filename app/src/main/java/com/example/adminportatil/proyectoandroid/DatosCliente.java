@@ -10,9 +10,16 @@ import android.widget.Toast;
 public class DatosCliente extends AppCompatActivity {
     EditText nombre, direccion, telefono, email;
 
-    public void cerrar(View v){
-        finish();
-        System.exit(0);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_datos_cliente);
+
+        //Recibe los intent para pasarlos
+        nombre = findViewById(R.id.nombre);
+        direccion = findViewById(R.id.direccion);
+        telefono = findViewById(R.id.telefono);
+        email = findViewById(R.id.email);
     }
 
     public void lanzarPedidoKebab(View view){
@@ -40,15 +47,9 @@ public class DatosCliente extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datos_cliente);
-
-        //Recibe los intent para pasarlos
-        nombre = findViewById(R.id.nombre);
-        direccion = findViewById(R.id.direccion);
-        telefono = findViewById(R.id.telefono);
-        email = findViewById(R.id.email);
+    public void cerrar(View v){
+        finish();
+        System.exit(0);
     }
+
 }
