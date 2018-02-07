@@ -1,5 +1,6 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
     String nom, ap, telf, email;
+    String[] foo_array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,13 @@ public class PedidoKebab extends AppCompatActivity {
         telf = intent.getStringExtra("telefono");
         email = intent.getStringExtra("email");
 
+        //Recibe la lista de kebabs desde strings.xml
+        Context context=getApplicationContext();
+        foo_array = context.getResources().getStringArray(R.array.tipo_kebab);
+
+        for (String aFoo_array : foo_array) {
+            System.out.println(aFoo_array);
+        }
     }
 
     public void lanzarPedidoKebab(View view){

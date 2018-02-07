@@ -23,12 +23,16 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void lanzarPedidoKebab(View view){
+        Toast toast;
 
         //Validacion de datos
         if(!nombre.getText().toString().isEmpty() || !direccion.getText().toString().isEmpty() || !telefono.getText().toString().isEmpty() || !email.getText().toString().isEmpty()){
 
-            if(telefono.getText().toString().length() != 9){
-                Toast toast = Toast.makeText(this, "El numero de telefono tiene que tener 9 caracteres.", Toast.LENGTH_SHORT);
+            if(telefono.getText().toString().length() > 9) {
+                toast = Toast.makeText(this, "El numero de telefono tiene mas que 9 digitos.", Toast.LENGTH_SHORT);
+                toast.show();
+            }else if (telefono.getText().toString().length() < 9) {
+                toast = Toast.makeText(this, "El numero de telefono tiene menos que 9 digitos.", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 Intent intent = new Intent(this, PedidoKebab.class);
@@ -41,7 +45,7 @@ public class DatosCliente extends AppCompatActivity {
             }
 
         } else {
-            Toast toast = Toast.makeText(this, "Tienes que llenar todos los campos.", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(this, "Tienes que llenar todos los campos.", Toast.LENGTH_SHORT);
             toast.show();
         }
 
