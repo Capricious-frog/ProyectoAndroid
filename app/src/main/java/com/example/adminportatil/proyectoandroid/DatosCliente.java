@@ -1,6 +1,11 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.DatabaseErrorHandler;
+import android.database.sqlite.SQLiteAbortException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,3 +62,4 @@ public class DatosCliente extends AppCompatActivity {
     }
 
 }
+
