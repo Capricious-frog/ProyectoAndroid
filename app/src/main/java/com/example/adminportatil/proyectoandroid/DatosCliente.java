@@ -44,6 +44,8 @@ public class DatosCliente extends AppCompatActivity {
                 intent.putExtra("telefono", telefono.getText().toString());
                 intent.putExtra("email", email.getText().toString());
 
+                añadirDatos();
+
                 startActivity(intent);
             }
 
@@ -52,6 +54,14 @@ public class DatosCliente extends AppCompatActivity {
             toast.show();
         }
 
+    }
+
+    public void añadirDatos(){
+        if(base_de_datos.insertarDatos(nombre.getText().toString(), direccion.getText().toString(), telefono.getText().toString(), email.getText().toString())){
+            System.out.println("Los valores se han introducido correctamente.");
+        } else {
+            System.out.println("Los valores no han sido añadidos.");
+        }
     }
 
     public void cerrar(View v){
