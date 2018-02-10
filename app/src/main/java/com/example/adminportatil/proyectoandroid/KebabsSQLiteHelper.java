@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class KebabsSQLiteHelper extends SQLiteOpenHelper {
 
     public KebabsSQLiteHelper(Context context) {
-        super(context, "Kebabs", null, 1);
+        super(context, "Kebabs.db", null, 1);
 
         SQLiteDatabase db = this.getWritableDatabase();
     }
