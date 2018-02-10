@@ -1,11 +1,6 @@
 package com.example.adminportatil.proyectoandroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.DatabaseErrorHandler;
-import android.database.sqlite.SQLiteAbortException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +9,14 @@ import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity {
     EditText nombre, direccion, telefono, email;
+    KebabsSQLiteHelper base_de_datos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_cliente);
+
+        base_de_datos = new KebabsSQLiteHelper(this);
 
         //Recibe los intent para pasarlos
         nombre = findViewById(R.id.nombre);
@@ -31,7 +29,7 @@ public class DatosCliente extends AppCompatActivity {
         Toast toast;
 
         //Validacion de datos
-        if(!nombre.getText().toString().isEmpty() || !direccion.getText().toString().isEmpty() || !telefono.getText().toString().isEmpty() || !email.getText().toString().isEmpty()){
+        if(!nombre.getText().toString().isEmpty() && !direccion.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !email.getText().toString().isEmpty()){
 
             if(telefono.getText().toString().length() > 9) {
                 toast = Toast.makeText(this, "El numero de telefono tiene mas que 9 digitos.", Toast.LENGTH_SHORT);
