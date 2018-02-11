@@ -37,12 +37,12 @@ public class Portada extends AppCompatActivity {
         bebidas = this.getResources().getStringArray(R.array.bebidas);
         precio_bebidas = this.getResources().getStringArray(R.array.precio_bebidas);
 
-        for (String precio_bebida : precio_bebidas) {
-            contentValues.put("nombre_bebida", precio_bebida);
+        for (String bebida : bebidas) {
+            contentValues.put("nombre_bebida", bebida);
         }
 
-        for (String bebida : bebidas) {
-            contentValues.put("precio", Float.parseFloat(bebida));
+        for (String precio_bebida : precio_bebidas) {
+            contentValues.put("precio", precio_bebida);
         }
 
         db.insert("Bebidas", null, contentValues);
