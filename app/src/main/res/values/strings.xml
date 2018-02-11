@@ -53,4 +53,22 @@
         <item>8</item>
         <item>9</item>
     </string-array>
+
+    <string-array name="bebidas">
+        <item>refesco_cola</item>
+        <item>refresco_limon</item>
+        <item>refresco_naranja</item>
+        <item>vino</item>
+        <item>cerveza</item>
+        <item>agua</item>
+    </string-array>
+
+    <string-array name="precio_bebidas">
+        <item>1,00</item>
+        <item>1,00</item>
+        <item>1,00</item>
+        <item>8,00</item>
+        <item>1,50</item>
+        <item>0,50</item>
+    </string-array>
 </resources>
