@@ -1,7 +1,9 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -51,6 +53,8 @@ public class PedidoKebab extends AppCompatActivity {
         for (int i = 0; i < tabla.getChildCount(); i++) {
             t = (TableRow) tabla.getChildAt(i);
             array_kebab.add(new ArrayList<Integer>());
+
+            añadirDatos((Spinner) t.getChildAt(0), (Spinner) t.getChildAt(1), (Spinner) t.getChildAt(2), (Spinner) t.getChildAt(3), (Spinner) t.getChildAt(4), (Spinner) t.getChildAt(5));
 
             for (int x = 0; x < t.getChildCount(); x++){
                     s = (Spinner) t.getChildAt(x);
@@ -112,6 +116,29 @@ public class PedidoKebab extends AppCompatActivity {
             toast.show();
         }
 
+    }
+
+    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3, Spinner s4, Spinner s5){
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        String[] tipoKebab, tipo_carne, tamaño, precio_tipo, precio_carne, precio_tamaño;
+
+        tipoKebab = this.getResources().getStringArray(R.array.tipo_kebab);
+        tipo_carne = this.getResources().getStringArray(R.array.tipo_carne);
+        tamaño = this.getResources().getStringArray(R.array.tamaño);
+        precio_tipo = this.getResources().getStringArray(R.array.precio_tipo_kebab);
+        precio_carne = this.getResources().getStringArray(R.array.precio_tipo_carne);
+        precio_tamaño = this.getResources().getStringArray(R.array.precio_tamaño);
+
+        contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
+        contentValues.put("carne_kebab", tipo_carne[s1.getSelectedItemPosition()]);
+        contentValues.put("tamaño_kebab", tamaño[s2.getSelectedItemPosition()]);
+        contentValues.put("precio_tipo", precio_tipo[s3.getSelectedItemPosition()]);
+        contentValues.put("precio_carne", precio_carne[s4.getSelectedItemPosition()]);
+        contentValues.put("precio_tamaño", precio_tamaño[s5.getSelectedItemPosition()]);
+
+        db.insert("Kebab", null, contentValues);
     }
 
     public void cerrar(View v){

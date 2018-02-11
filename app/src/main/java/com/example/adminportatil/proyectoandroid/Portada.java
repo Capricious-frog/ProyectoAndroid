@@ -42,7 +42,7 @@ public class Portada extends AppCompatActivity {
         }
 
         for (String precio_bebida : precio_bebidas) {
-            contentValues.put("precio", precio_bebida);
+            contentValues.put("precio", Integer.parseInt(precio_bebida));
         }
 
         db.insert("Bebidas", null, contentValues);

@@ -24,22 +24,41 @@
     <string name="buscar_cliente">Buscar cliente</string>
 
     <string-array name="tipo_kebab">
-        <item>Döner: 4,00€</item>
-        <item>Dürüm: 4,50€</item>
-        <item>Lahmacum: 5,00€</item>
-        <item>Shawarma: 4,50€</item>
-        <item>Gyros: 5,00€</item>
+        <item>Döner</item>
+        <item>Dürüm</item>
+        <item>Lahmacum</item>
+        <item>Shawarma</item>
+        <item>Gyros</item>
+    </string-array>
+
+    <string-array name="precio_tipo_kebab">
+        <item>4,00</item>
+        <item>4,50</item>
+        <item>5,00</item>
+        <item>4,50</item>
+        <item>5,00</item>
     </string-array>
 
     <string-array name="tipo_carne">
-        <item>Pollo: 0,50€</item>
-        <item>Ternera: 1,00€</item>
-        <item>Cordero: 0,50€</item>
+        <item>Pollo</item>
+        <item>Ternera</item>
+        <item>Cordero</item>
+    </string-array>
+
+    <string-array name="precio_tipo_carne">
+        <item>0,50</item>
+        <item>1,00</item>
+        <item>0,50</item>
     </string-array>
 
     <string-array name="tamaño">
         <item>Normal</item>
-        <item>Completo 1,00€</item>
+        <item>Completo</item>
+    </string-array>
+
+    <string-array name="precio_tamaño">
+        <item>0</item>
+        <item>1,00</item>
     </string-array>
 
     <string-array name="cantidad">
