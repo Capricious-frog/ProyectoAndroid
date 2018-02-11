@@ -131,12 +131,12 @@ public class PedidoKebab extends AppCompatActivity {
         precio_carne = this.getResources().getStringArray(R.array.precio_tipo_carne);
         precio_tamaño = this.getResources().getStringArray(R.array.precio_tamaño);
 
-        contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
-        contentValues.put("carne_kebab", tipo_carne[s1.getSelectedItemPosition()]);
-        contentValues.put("tamaño_kebab", tamaño[s2.getSelectedItemPosition()]);
-        contentValues.put("precio_tipo", precio_tipo[s3.getSelectedItemPosition()]);
-        contentValues.put("precio_carne", precio_carne[s4.getSelectedItemPosition()]);
-        contentValues.put("precio_tamaño", precio_tamaño[s5.getSelectedItemPosition()]);
+        contentValues.put("tipo_kebab", Integer.parseInt(tipoKebab[s0.getSelectedItemPosition()]));
+        contentValues.put("carne_kebab", Integer.parseInt(tipo_carne[s1.getSelectedItemPosition()]));
+        contentValues.put("tamaño_kebab", Integer.parseInt(tamaño[s2.getSelectedItemPosition()]));
+        contentValues.put("precio_tipo", Integer.parseInt(precio_tipo[s3.getSelectedItemPosition()]));
+        contentValues.put("precio_carne", Integer.parseInt(precio_carne[s4.getSelectedItemPosition()]));
+        contentValues.put("precio_tamaño", Integer.parseInt(precio_tamaño[s5.getSelectedItemPosition()]));
 
         db.insert("Kebab", null, contentValues);
     }
