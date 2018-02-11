@@ -39,7 +39,7 @@
 
     <string-array name="tamaño">
         <item>Normal</item>
-        <item>Completo +1,00€</item>
+        <item>Completo 1,00€</item>
     </string-array>
 
     <string-array name="cantidad">
