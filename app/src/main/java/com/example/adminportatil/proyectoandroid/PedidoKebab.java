@@ -122,19 +122,17 @@ public class PedidoKebab extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        String[] tipoKebab, tipo_carne, tamaño, precio_tipo, precio_carne, precio_tamaño;
+        String[] tipoKebab, tipo_carne, tamaño, precio_tipo;
 
         tipoKebab = this.getResources().getStringArray(R.array.tipo_kebab);
         tipo_carne = this.getResources().getStringArray(R.array.tipo_carne);
         tamaño = this.getResources().getStringArray(R.array.tamaño);
         precio_tipo = this.getResources().getStringArray(R.array.precio_tipo_kebab);
-        precio_carne = this.getResources().getStringArray(R.array.precio_tipo_carne);
-        precio_tamaño = this.getResources().getStringArray(R.array.precio_tamaño);
 
         contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
         contentValues.put("tamaño_kebab", tamaño[s1.getSelectedItemPosition()]);
         contentValues.put("carne_kebab", tipo_carne[s2.getSelectedItemPosition()]);
-        contentValues.put("cantidad", Integer.parseInt(precio_tipo[s3.getSelectedItemPosition()]));
+        contentValues.put("cantidad", s3.getSelectedItemPosition());
 
         db.insert("Pedido_kebab", null, contentValues);
     }
