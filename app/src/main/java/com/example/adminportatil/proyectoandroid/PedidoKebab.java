@@ -54,7 +54,7 @@ public class PedidoKebab extends AppCompatActivity {
             t = (TableRow) tabla.getChildAt(i);
             array_kebab.add(new ArrayList<Integer>());
 
-            añadirDatos((Spinner) t.getChildAt(0), (Spinner) t.getChildAt(1), (Spinner) t.getChildAt(2), (Spinner) t.getChildAt(3), (Spinner) t.getChildAt(4), (Spinner) t.getChildAt(5));
+            añadirDatos((Spinner) t.getChildAt(0), (Spinner) t.getChildAt(1), (Spinner) t.getChildAt(2), (Spinner) t.getChildAt(3));
 
             for (int x = 0; x < t.getChildCount(); x++){
                     s = (Spinner) t.getChildAt(x);
@@ -118,7 +118,7 @@ public class PedidoKebab extends AppCompatActivity {
 
     }
 
-    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3, Spinner s4, Spinner s5){
+    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -131,14 +131,12 @@ public class PedidoKebab extends AppCompatActivity {
         precio_carne = this.getResources().getStringArray(R.array.precio_tipo_carne);
         precio_tamaño = this.getResources().getStringArray(R.array.precio_tamaño);
 
-        contentValues.put("tipo_kebab", Integer.parseInt(tipoKebab[s0.getSelectedItemPosition()]));
-        contentValues.put("carne_kebab", Integer.parseInt(tipo_carne[s1.getSelectedItemPosition()]));
-        contentValues.put("tamaño_kebab", Integer.parseInt(tamaño[s2.getSelectedItemPosition()]));
-        contentValues.put("precio_tipo", Integer.parseInt(precio_tipo[s3.getSelectedItemPosition()]));
-        contentValues.put("precio_carne", Integer.parseInt(precio_carne[s4.getSelectedItemPosition()]));
-        contentValues.put("precio_tamaño", Integer.parseInt(precio_tamaño[s5.getSelectedItemPosition()]));
+        contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
+        contentValues.put("tamaño_kebab", tamaño[s1.getSelectedItemPosition()]);
+        contentValues.put("carne_kebab", tipo_carne[s2.getSelectedItemPosition()]);
+        contentValues.put("cantidad", Integer.parseInt(precio_tipo[s3.getSelectedItemPosition()]));
 
-        db.insert("Kebab", null, contentValues);
+        db.insert("Pedido_kebab", null, contentValues);
     }
 
     public void cerrar(View v){
