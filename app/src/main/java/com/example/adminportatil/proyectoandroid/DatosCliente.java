@@ -1,6 +1,8 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -57,11 +59,16 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void añadirDatos(){
-        if(base_de_datos.insertarDatos(nombre.getText().toString(), direccion.getText().toString(), telefono.getText().toString(), email.getText().toString())){
-            System.out.println("Los valores se han introducido correctamente.");
-        } else {
-            System.out.println("Los valores no han sido añadidos.");
-        }
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("Nombre", nombre.getText().toString());
+        contentValues.put("Direccion", direccion.getText().toString());
+        contentValues.put("Telefono", telefono.getText().toString());
+        contentValues.put("Email", email.getText().toString());
+
+        db.insert("Datos_cliente", null, contentValues);
     }
 
     public void cerrar(View v){
