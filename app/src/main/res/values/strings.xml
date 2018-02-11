@@ -21,6 +21,7 @@
     <string name="textview">Introduce tus datos</string>
     <string name="enviar">enviar</string>
     <string name="todo">TODO</string>
+    <string name="buscar_cliente">Buscar cliente</string>
 
     <string-array name="tipo_kebab">
         <item>Döner: 4,00€</item>
