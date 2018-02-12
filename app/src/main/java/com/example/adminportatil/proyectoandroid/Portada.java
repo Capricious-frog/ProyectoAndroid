@@ -1,11 +1,9 @@
 package com.example.adminportatil.proyectoandroid;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,7 +36,8 @@ public class Portada extends AppCompatActivity {
         precio_bebidas = this.getResources().getStringArray(R.array.precio_bebidas);
 
         for (int i = 0; i < bebidas.length; i++) {
-            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES(" + bebidas[i] + ", " + Integer.parseInt(precio_bebidas[i]) + ")");
+
+            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES('" + bebidas[i] + "', " + Integer.parseInt(precio_bebidas[i]) + ")");
 
             //contentValues.put("nombre_bebida", bebidas[i]);
             //contentValues.put("precio", Integer.parseInt(precio_bebidas[i]));
