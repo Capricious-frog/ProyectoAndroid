@@ -125,8 +125,8 @@ public class PedidoKebab extends AppCompatActivity {
         String[] tipoKebab, tipo_carne, tamaño;
 
         tipoKebab = this.getResources().getStringArray(R.array.tipo_kebab);
-        tipo_carne = this.getResources().getStringArray(R.array.tipo_carne);
         tamaño = this.getResources().getStringArray(R.array.tamaño);
+        tipo_carne = this.getResources().getStringArray(R.array.tipo_carne);
 
         contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
         contentValues.put("tamaño_kebab", tamaño[s1.getSelectedItemPosition()]);
