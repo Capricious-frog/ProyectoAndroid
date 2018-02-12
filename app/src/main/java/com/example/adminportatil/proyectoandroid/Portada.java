@@ -30,22 +30,21 @@ public class Portada extends AppCompatActivity {
     public void añadirDatos(){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        //ContentValues contentValues = new ContentValues();
 
         String[] bebidas, precio_bebidas;
 
         bebidas = this.getResources().getStringArray(R.array.bebidas);
         precio_bebidas = this.getResources().getStringArray(R.array.precio_bebidas);
 
-        for (String bebida : bebidas) {
-            contentValues.put("nombre_bebida", bebida);
-        }
+        for (int i = 0; i < bebidas.length; i++) {
+            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES(" + bebidas[i] + ", " + Integer.parseInt(precio_bebidas[i]) + ")");
 
-        for (String precio_bebida : precio_bebidas) {
-            contentValues.put("precio", Integer.parseInt(precio_bebida));
-        }
+            //contentValues.put("nombre_bebida", bebidas[i]);
+            //contentValues.put("precio", Integer.parseInt(precio_bebidas[i]));
 
-        db.insert("Bebidas", null, contentValues);
+            //db.insert("Bebidas", null, contentValues);
+        }
     }
 
 }
