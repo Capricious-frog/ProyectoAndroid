@@ -37,7 +37,7 @@ public class Portada extends AppCompatActivity {
 
         for (int i = 0; i < bebidas.length; i++) {
 
-            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES('" + bebidas[i] + "', " + Integer.parseInt(precio_bebidas[i]) + ")");
+            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES('" + bebidas[i] + "', " + Float.parseFloat(precio_bebidas[i]) + ")");
 
             //contentValues.put("nombre_bebida", bebidas[i]);
             //contentValues.put("precio", Integer.parseInt(precio_bebidas[i]));
