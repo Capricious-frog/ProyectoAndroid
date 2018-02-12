@@ -1,6 +1,8 @@
 package com.example.adminportatil.proyectoandroid;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,7 +48,25 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         intent.putExtra("kebab", kebab);
         intent.putExtra("bebidas", bebidas);
 
+        añadirDatos(bebidas);
+
         startActivity(intent);
+    }
+
+    public void añadirDatos(int[] bebidas){
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        String[] strings_bebidas;
+
+        strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
+
+        for (String bebida : strings_bebidas) {
+            contentValues.put("nombre_bebida", bebida);
+            contentValues.put("cantidad", bebida);
+        }
+
+        db.insert("Pedido_bebida", null, contentValues);
     }
 
     public void cerrar(View v){
