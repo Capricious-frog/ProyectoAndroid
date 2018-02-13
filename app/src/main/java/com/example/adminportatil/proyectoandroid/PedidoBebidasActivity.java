@@ -3,6 +3,7 @@ package com.example.adminportatil.proyectoandroid;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,8 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         Spinner vino = findViewById(R.id.cantidad_vino);
         Spinner cerveza = findViewById(R.id.cantidad_cerveza);
         Spinner agua = findViewById(R.id.cantidad_agua);
+        ArrayList<Spinner> spinners_cantidad = new ArrayList<>();
+        ConstraintLayout constraint_layout = findViewById(R.id.cl);
 
         //Mete en un array los valores seleccionados de todos los spinners
         int[] bebidas = {cola.getSelectedItemPosition(), limon.getSelectedItemPosition(), naranja.getSelectedItemPosition(), vino.getSelectedItemPosition(), cerveza.getSelectedItemPosition(), agua.getSelectedItemPosition()};
@@ -48,25 +51,31 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         intent.putExtra("kebab", kebab);
         intent.putExtra("bebidas", bebidas);
 
-        añadirDatos(bebidas);
+        for (int i = 0; i < constraint_layout.getChildCount(); i++) {
+            final View child = constraint_layout.getChildAt(i);
+            if(child instanceof Spinner){
+                spinners_cantidad.add((Spinner) constraint_layout.getChildAt(i));
+            }
+        }
+
+        añadirDatos(spinners_cantidad);
 
         startActivity(intent);
     }
 
-    public void añadirDatos(int[] bebidas){
+    public void añadirDatos(ArrayList<Spinner> spinners_cantidad){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+
         String[] strings_bebidas;
 
         strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
 
-        for (String bebida : strings_bebidas) {
-            contentValues.put("nombre_bebida", bebida);
-            contentValues.put("cantidad", bebida);
+        for (int i = 0; i < strings_bebidas.length; i++) {
+            if (spinners_cantidad.get(i).getSelectedItemPosition() != 0){
+                db.execSQL("INSERT INTO Pedido_bebida (nombre_bebida, cantidad) VALUES ('" + strings_bebidas[i] + "', " + spinners_cantidad.get(i).getSelectedItemPosition() + ")");
+            }
         }
-
-        db.insert("Pedido_bebida", null, contentValues);
     }
 
     public void cerrar(View v){

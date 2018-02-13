@@ -114,13 +114,15 @@ public class PedidoKebab extends AppCompatActivity {
 
     }
 
-    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3){
+    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3) {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
 
+        if (s3.getSelectedItemPosition() != 0) {
             db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('" + tipoKebab[s0.getSelectedItemPosition()] + "', + '" + tamaño[s1.getSelectedItemPosition()] + "', '" + tipo_carne[s2.getSelectedItemPosition()] + "', " + s3.getSelectedItemPosition() + ")");
+        }
     }
 
     public void cerrar(View v){
