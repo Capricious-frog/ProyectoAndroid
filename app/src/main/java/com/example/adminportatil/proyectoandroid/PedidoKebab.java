@@ -35,10 +35,6 @@ public class PedidoKebab extends AppCompatActivity {
         //Recibe la lista de kebabs desde strings.xml
         Context context=getApplicationContext();
         foo_array = context.getResources().getStringArray(R.array.tipo_kebab);
-
-        for (String aFoo_array : foo_array) {
-            System.out.println(aFoo_array);
-        }
     }
 
     public void lanzarPedidoKebab(View view){
@@ -124,8 +120,7 @@ public class PedidoKebab extends AppCompatActivity {
 
         String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
 
-        //db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('" + tipoKebab[s0.getSelectedItemPosition()] + "', + '" + tamaño[s1.getSelectedItemPosition()] + "', '" + tipo_carne[s2.getSelectedItemPosition()] + "', " + s3.getSelectedItemPosition() + ")");
-        db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('Durum', 'Normal', 'pollo', 1)");
+            db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('" + tipoKebab[s0.getSelectedItemPosition()] + "', + '" + tamaño[s1.getSelectedItemPosition()] + "', '" + tipo_carne[s2.getSelectedItemPosition()] + "', " + s3.getSelectedItemPosition() + ")");
     }
 
     public void cerrar(View v){
