@@ -121,19 +121,11 @@ public class PedidoKebab extends AppCompatActivity {
     public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        String[] tipoKebab, tipo_carne, tamaño;
 
-        tipoKebab = this.getResources().getStringArray(R.array.tipo_kebab);
-        tamaño = this.getResources().getStringArray(R.array.tamaño);
-        tipo_carne = this.getResources().getStringArray(R.array.tipo_carne);
+        String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
 
-        contentValues.put("tipo_kebab", tipoKebab[s0.getSelectedItemPosition()]);
-        contentValues.put("tamaño_kebab", tamaño[s1.getSelectedItemPosition()]);
-        contentValues.put("carne_kebab", tipo_carne[s2.getSelectedItemPosition()]);
-        contentValues.put("cantidad", s3.getSelectedItemPosition());
-
-        db.insert("Pedido_kebab", null, contentValues);
+        //db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('" + tipoKebab[s0.getSelectedItemPosition()] + "', + '" + tamaño[s1.getSelectedItemPosition()] + "', '" + tipo_carne[s2.getSelectedItemPosition()] + "', " + s3.getSelectedItemPosition() + ")");
+        db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('Durum', 'Normal', 'pollo', 1)");
     }
 
     public void cerrar(View v){

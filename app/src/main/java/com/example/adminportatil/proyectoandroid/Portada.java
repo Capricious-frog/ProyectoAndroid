@@ -14,7 +14,7 @@ public class Portada extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portada);
 
-        añadirDatos();
+        //añadirDatos();
 
         new Timer().schedule(new TimerTask() {
             @Override
@@ -22,28 +22,16 @@ public class Portada extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), DatosCliente.class));
             }
         }, 3000);
-
     }
-
     public void añadirDatos(){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
-        //ContentValues contentValues = new ContentValues();
 
-        String[] bebidas, precio_bebidas;
+        String bebidas, precio_bebidas;
 
-        bebidas = this.getResources().getStringArray(R.array.bebidas);
-        precio_bebidas = this.getResources().getStringArray(R.array.precio_bebidas);
+        bebidas = getResources().getStringArray(R.array.bebidas)[0];
+        precio_bebidas = getResources().getStringArray(R.array.precio_bebidas)[0];
 
-        for (int i = 0; i < bebidas.length; i++) {
-
-            db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES('" + bebidas[i] + "', " + Float.parseFloat(precio_bebidas[i]) + ")");
-
-            //contentValues.put("nombre_bebida", bebidas[i]);
-            //contentValues.put("precio", Integer.parseInt(precio_bebidas[i]));
-
-            //db.insert("Bebidas", null, contentValues);
-        }
+        db.execSQL("INSERT INTO Bebidas (nombre_bebida, precio) VALUES('" + bebidas + "', " + Float.parseFloat(precio_bebidas) + ")");
     }
-
 }

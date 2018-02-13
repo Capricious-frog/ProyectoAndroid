@@ -75,9 +75,9 @@
     </string-array>
 
     <string-array name="bebidas">
-        <item>Refesco cola</item>
-        <item>Refresco limon</item>
-        <item>Refresco naranja</item>
+        <item>Refesco_cola</item>
+        <item>Refresco_limon</item>
+        <item>Refresco_naranja</item>
         <item>Vino</item>
         <item>Cerveza</item>
         <item>Agua</item>
