@@ -23,6 +23,7 @@ public class Portada extends AppCompatActivity {
             }
         }, 3000);
     }
+
     public void añadirDatos(){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
