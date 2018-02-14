@@ -51,6 +51,9 @@ public class ResumenPedido extends AppCompatActivity {
             } while(busqueda_datos.moveToNext());
         }
 
+        texto.append("Nombre: " + nombre + "\nDireccion: " + direccion);
+        texto.append("\n\n--Kebab--");
+
         if (busqueda_kebabs.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
@@ -68,13 +71,6 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
             } while(busqueda_bebidas.moveToNext());
         }
-
-        texto.append("Nombre: " + nombre + "\nDireccion: " + direccion);
-        texto.append("\n\n--Kebab--");
-
-
-
-
 
 
 
