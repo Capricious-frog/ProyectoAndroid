@@ -88,7 +88,7 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
 
-                precio = precio_pedido * Integer.parseInt(busqueda_kebabs.getString(3));
+                precio += precio_pedido * Integer.parseInt(busqueda_kebabs.getString(3));
 
                 texto.append("\n");
             } while(busqueda_kebabs.moveToNext());
@@ -111,7 +111,7 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append("\n");
                 texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
 
-                precio = precio_pedido2 * Integer.parseInt(busqueda_bebidas.getString(1));
+                precio += precio_pedido2 * Integer.parseInt(busqueda_bebidas.getString(1));
 
                 texto.append("\n");
             } while(busqueda_bebidas.moveToNext());
