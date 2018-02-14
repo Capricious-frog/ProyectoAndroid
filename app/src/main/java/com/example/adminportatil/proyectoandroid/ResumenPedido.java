@@ -73,18 +73,22 @@ public class ResumenPedido extends AppCompatActivity {
 
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
+
                 for(int i = 0; i < strings_bebidas.length; i++){
                     if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
                         precio_pedido += precio_tamaño[i];
                     }
                 }
+
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(2)); //Tipo carne
+
                 for(int i = 0; i < strings_bebidas.length; i++){
                     if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
                         precio_pedido += precio_tipo_carne[i];
                     }
                 }
+
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
 
