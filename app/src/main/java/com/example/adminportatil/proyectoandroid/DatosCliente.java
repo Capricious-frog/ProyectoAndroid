@@ -95,7 +95,7 @@ public class DatosCliente extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        //db.execSQL("INSERT INTO Datos_cliente (Nombre, Direccion, Telefono, Email) VALUES (" + nombre.getText().toString() + ", " + direccion.getText().toString() + " , " + telefono.getText().toString() + " , " + email.getText().toString() + " )");
+        //db.execSQL("INSERT INTO Datos_cliente (Nombre, Direccion, Telefono, Email) VALUES (" + nombre.getText().toString() + ", " + direccion.getText().toString() + ", " + telefono.getText().toString() + ", " + email.getText().toString() + ")");
 
         ContentValues contentValues = new ContentValues();
 
