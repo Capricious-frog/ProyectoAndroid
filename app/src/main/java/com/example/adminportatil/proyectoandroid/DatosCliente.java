@@ -46,7 +46,9 @@ public class DatosCliente extends AppCompatActivity {
                 Cursor c = db.rawQuery("SELECT MAX(cod_pedido) FROM Datos_cliente", null);
 
                 Intent intent = new Intent(this, PedidoKebab.class);
-                intent.putExtra("codigo_pedido", c.moveToFirst());
+                if (c.moveToFirst()) {
+                    intent.putExtra("codigo_pedido", String.valueOf(c.getString(0)));
+                }
 
                 añadirDatos();
 
