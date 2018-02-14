@@ -25,6 +25,7 @@ public class ResumenPedido extends AppCompatActivity {
 
         String nombre = null, direccion = null, telefono = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        Double[] precio_tipo_kebab = {4.00, 4.50, 5.00, 4.50, 5.00}, precio_tipo_carne = {0.50, 1.0, 0.50}, precio_tamaño = {0.00, 1.00}, precio_bebidas = {1.00, 1.00, 1.00, 8.00, 1.50, 0.50};
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
@@ -74,6 +75,25 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append("\n");
             } while(busqueda_bebidas.moveToNext());
         }
+
+        texto.append("\n\n--Regalo--");
+
+        if(precio > 15) {
+            texto.append("\nPeluche de android");
+        } else {
+            texto.append("\nNada");
+
+        }
+
+        if (precio > 20) {
+            texto.append("\nVale para el comedor de Cebanc");
+        }
+
+
+        texto.append("\n\n--Precio--");
+        texto.append("\nPrecio neto: " + decimalFormat.format(precio) + "€");
+        texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
+        texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
 
 
 
