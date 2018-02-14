@@ -45,9 +45,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        String[] strings_bebidas;
-
-        strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
+        String[] strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
 
         for (int i = 0; i < strings_bebidas.length; i++) {
             if (spinners_cantidad.get(i).getSelectedItemPosition() != 0){

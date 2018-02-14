@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
     String nom, ap, telf, email, cod_pedido;
@@ -26,6 +27,7 @@ public class ResumenPedido extends AppCompatActivity {
         String nombre = null, direccion = null, telefono = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         Double[] precio_tipo_kebab = {4.00, 4.50, 5.00, 4.50, 5.00}, precio_tipo_carne = {0.50, 1.0, 0.50}, precio_tamaño = {0.00, 1.00}, precio_bebidas = {1.00, 1.00, 1.00, 8.00, 1.50, 0.50};
+        String[] strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
@@ -71,6 +73,13 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
+
+                for(int i = 0; i < strings_bebidas.length; i++){
+                    if(Objects.equals(busqueda_bebidas.getString(0), strings_bebidas[i])){
+                        precio += precio_bebidas[i];
+                    }
+                }
+
                 texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
                 texto.append("\n");
             } while(busqueda_bebidas.moveToNext());
