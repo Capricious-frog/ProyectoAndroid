@@ -61,7 +61,34 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void buscar_cliente(View view) {
+        if(!nombre.getText().toString().isEmpty()) {
+            KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+            SQLiteDatabase db = kqlh.getWritableDatabase();
 
+            String[] campos = new String[] {"Direccion", "Telefono", "Email"};
+            String[] args = new String[] {nombre.getText().toString()};
+
+            String direcc = null, telf = null, em = null;
+
+            Cursor c = db.query("Datos_cliente", campos, "Nombre = ?", args, null, null, null);
+
+            //Nos aseguramos de que existe al menos un registro
+            if (c.moveToFirst()) {
+                //Recorremos el cursor hasta que no haya más registros
+                do {
+                    direcc= c.getString(0);
+                    telf = c.getString(1);
+                    em = c.getString(2);
+                } while(c.moveToNext());
+            }
+
+            direccion.setText(direcc);
+            telefono.setText(telf);
+            email.setText(em);
+        } else {
+            Toast toast = Toast.makeText(this, "No hay nada en el campo del nombre.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public void añadirDatos(){
