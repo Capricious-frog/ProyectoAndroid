@@ -60,6 +60,10 @@ public class DatosCliente extends AppCompatActivity {
 
     }
 
+    public void buscar_cliente(View view) {
+
+    }
+
     public void añadirDatos(){
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
