@@ -61,14 +61,17 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
                 texto.append(busqueda_kebabs.getString(2)); //Tipo carne
                 texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
+                texto.append("\n");
             } while(busqueda_kebabs.moveToNext());
         }
 
+        texto.append("\n\n--Bebidas--");
         if (busqueda_bebidas.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
                 texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
+                texto.append("\n");
             } while(busqueda_bebidas.moveToNext());
         }
 
