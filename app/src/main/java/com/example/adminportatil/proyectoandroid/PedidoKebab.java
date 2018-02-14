@@ -1,6 +1,5 @@
 package com.example.adminportatil.proyectoandroid;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
-    String nom, ap, telf, email;
+    String cod_pedido;
     String[] foo_array;
 
     @Override
@@ -26,11 +25,7 @@ public class PedidoKebab extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_kebab);
 
         Intent intent = getIntent();
-
-        nom = intent.getStringExtra("nombre");
-        ap = intent.getStringExtra("apellido");
-        telf = intent.getStringExtra("telefono");
-        email = intent.getStringExtra("email");
+        cod_pedido = intent.getStringExtra("codigo_pedido");
 
         //Recibe la lista de kebabs desde strings.xml
         Context context=getApplicationContext();
@@ -62,11 +57,7 @@ public class PedidoKebab extends AppCompatActivity {
         if(!validaKebab(array_kebab)) {
 
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
-            intent.putExtra("nombre", nom);
-            intent.putExtra("apellido", ap);
-            intent.putExtra("telefono", telf);
-            intent.putExtra("email", email);
-            intent.putExtra("kebab", array_kebab);
+            intent.putExtra("codigo_pedido", cod_pedido);
 
             startActivity(intent);
         } else {

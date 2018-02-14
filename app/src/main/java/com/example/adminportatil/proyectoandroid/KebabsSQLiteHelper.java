@@ -23,8 +23,8 @@ public class KebabsSQLiteHelper extends SQLiteOpenHelper {
     }
 
     private void crearBd(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE \"Datos_cliente\" ( 'cod_cliente' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'Nombre' TEXT NOT NULL, 'Direccion' TEXT NOT NULL, 'Telefono' TEXT NOT NULL, 'Email' TEXT NOT NULL )");
-        db.execSQL("CREATE TABLE 'Pedido_kebab' ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'tipo_kebab' TEXT NOT NULL, 'tamaño_kebab' TEXT NOT NULL, 'tipo_carne' TEXT NOT NULL, 'cantidad' INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE 'Pedido_bebida' ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'nombre_bebida' TEXT NOT NULL UNIQUE, 'cantidad' INTEGER NOT NULL )");
+        db.execSQL("CREATE TABLE \"Datos_cliente\" ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'Nombre' TEXT NOT NULL, 'Direccion' TEXT NOT NULL, 'Telefono' TEXT NOT NULL, 'Email' TEXT NOT NULL )");
+        db.execSQL("CREATE TABLE 'Pedido_kebab' ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY UNIQUE, 'tipo_kebab' TEXT NOT NULL, 'tamaño_kebab' TEXT NOT NULL, 'tipo_carne' TEXT NOT NULL, 'cantidad' INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE 'Pedido_bebida' ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY UNIQUE, 'nombre_bebida' TEXT NOT NULL UNIQUE, 'cantidad' INTEGER NOT NULL )");
     }
 }

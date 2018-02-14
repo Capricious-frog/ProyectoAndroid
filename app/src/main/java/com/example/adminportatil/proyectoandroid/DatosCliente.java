@@ -2,6 +2,7 @@ package com.example.adminportatil.proyectoandroid;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,11 +41,12 @@ public class DatosCliente extends AppCompatActivity {
                 toast = Toast.makeText(this, "El numero de telefono tiene menos que 9 digitos.", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
+                KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+                SQLiteDatabase db = kqlh.getWritableDatabase();
+                Cursor c = db.rawQuery("SELECT MAX(cod_pedido) FROM Datos_cliente", null);
+
                 Intent intent = new Intent(this, PedidoKebab.class);
-                intent.putExtra("nombre", nombre.getText().toString());
-                intent.putExtra("apellido", direccion.getText().toString());
-                intent.putExtra("telefono", telefono.getText().toString());
-                intent.putExtra("email", email.getText().toString());
+                intent.putExtra("codigo_pedido", c.moveToFirst());
 
                 añadirDatos();
 
@@ -80,4 +82,3 @@ public class DatosCliente extends AppCompatActivity {
     }
 
 }
-

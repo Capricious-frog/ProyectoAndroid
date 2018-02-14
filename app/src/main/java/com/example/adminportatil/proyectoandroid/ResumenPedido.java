@@ -1,6 +1,8 @@
 package com.example.adminportatil.proyectoandroid;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +12,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ResumenPedido extends AppCompatActivity {
-    String nom, ap, telf, email;
+    String nom, ap, telf, email, cod_pedido;
     ArrayList<ArrayList<Integer>> kebab;
     int[] bebidas;
     int contador = 0;
@@ -21,6 +23,7 @@ public class ResumenPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumen_pedido);
 
+        String nombre = null, direccion = null, telefono = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
         TextView texto = findViewById(R.id.editText);
@@ -28,21 +31,59 @@ public class ResumenPedido extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        nom = intent.getStringExtra("nombre");
-        ap = intent.getStringExtra("apellido");
-        telf = intent.getStringExtra("telefono");
-        email = intent.getStringExtra("email");
-        kebab = (ArrayList<ArrayList<Integer>>) intent.getSerializableExtra("kebab");
-        bebidas = intent.getIntArrayExtra("bebidas");
+        cod_pedido = intent.getStringExtra("codigo_pedido");
+        String[] cped = {cod_pedido}, campos_datos = {"Nombre", "Direccion", "Telefono", "Email"}, campos_kebab = {"tipo_kebab", "tamaño_kebab", "tipo_carne", "cantidad"}, campos_bebida = {"nombre_bebida", "cantidad"};
 
-        texto.append("Nombre: " + nom + "\nApellido: " + ap);
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+
+        Cursor busqueda_datos = db.query("Datos_cliente", campos_datos, "cod_pedido = ?", cped, null, null, null);
+        Cursor busqueda_kebabs = db.query("Pedido_kebab", campos_kebab, "cod_pedido = ?", cped, null, null, null);
+        Cursor busqueda_bebidas = db.query("Pedido_bebida", campos_bebida, "cod_pedido = ?", cped, null, null, null);
+
+        if (busqueda_datos.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                nombre= busqueda_datos.getString(0);
+                direccion = busqueda_datos.getString(1);
+                telefono = busqueda_datos.getString(2);
+                email = busqueda_datos.getString(3);
+            } while(busqueda_datos.moveToNext());
+        }
+
+        if (busqueda_kebabs.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                texto.append(busqueda_kebabs.getString(0)); //Tipo kebab
+                texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
+                texto.append(busqueda_kebabs.getString(2)); //Tipo carne
+                texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
+            } while(busqueda_kebabs.moveToNext());
+        }
+
+        if (busqueda_bebidas.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
+                texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
+            } while(busqueda_bebidas.moveToNext());
+        }
+
+        texto.append("Nombre: " + nombre + "\nDireccion: " + direccion);
         texto.append("\n\n--Kebab--");
+
+
+
+
+
+
 
 
         //Navega por los arrays para conseguir la informacion de las filas y luego las muestra en el edit text
         //Hace algo similar con las bebidas
         //Por alguna razon el array sale de pedido kebab con valores pero al llegar aqui todos los valores son 0
         //Esa es la razon por la que no se muestra correctamente
+        /*
         for(int i = 0; i < kebab.size(); i++){
             for(int x = 0; x < kebab.get(i).size(); x++) {
                 ArrayList<Integer> fila = new ArrayList<> (kebab.get(i));
@@ -137,6 +178,7 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\nPrecio neto: " + decimalFormat.format(precio) + "€");
         texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
         texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
+        */
     }
 
     public void enviar(View v){
