@@ -27,6 +27,7 @@ public class ResumenPedido extends AppCompatActivity {
         String nombre = null, direccion = null, telefono = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         Double[] precio_tipo_kebab = {4.00, 4.50, 5.00, 4.50, 5.00}, precio_tipo_carne = {0.50, 1.0, 0.50}, precio_tamaño = {0.00, 1.00}, precio_bebidas = {1.00, 1.00, 1.00, 8.00, 1.50, 0.50};
+        String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
         String[] strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
 
         TextView texto = findViewById(R.id.editText);
@@ -60,27 +61,58 @@ public class ResumenPedido extends AppCompatActivity {
         if (busqueda_kebabs.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
+                int precio_pedido = 1;
+
                 texto.append(busqueda_kebabs.getString(0)); //Tipo kebab
+
+                for(int i = 0; i < tipoKebab.length; i++){
+                    if(Objects.equals(busqueda_kebabs.getString(0), tipoKebab[i])){
+                        precio_pedido += precio_tipo_kebab[i];
+                    }
+                }
+
+                texto.append("\n");
                 texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
+                for(int i = 0; i < strings_bebidas.length; i++){
+                    if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
+                        precio_pedido += precio_tamaño[i];
+                    }
+                }
+                texto.append("\n");
                 texto.append(busqueda_kebabs.getString(2)); //Tipo carne
+                for(int i = 0; i < strings_bebidas.length; i++){
+                    if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
+                        precio_pedido += precio_tipo_carne[i];
+                    }
+                }
+                texto.append("\n");
                 texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
+
+                precio = precio_pedido * Integer.parseInt(busqueda_kebabs.getString(3));
+
                 texto.append("\n");
             } while(busqueda_kebabs.moveToNext());
         }
 
         texto.append("\n\n--Bebidas--");
+
         if (busqueda_bebidas.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
+                int precio_pedido2 = 1;
                 texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
 
                 for(int i = 0; i < strings_bebidas.length; i++){
                     if(Objects.equals(busqueda_bebidas.getString(0), strings_bebidas[i])){
-                        precio += precio_bebidas[i];
+                        precio_pedido2 += precio_bebidas[i];
                     }
                 }
 
+                texto.append("\n");
                 texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
+
+                precio = precio_pedido2 * Integer.parseInt(busqueda_bebidas.getString(1));
+
                 texto.append("\n");
             } while(busqueda_bebidas.moveToNext());
         }
