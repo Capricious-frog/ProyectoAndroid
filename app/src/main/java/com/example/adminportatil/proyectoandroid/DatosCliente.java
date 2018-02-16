@@ -101,12 +101,12 @@ public class DatosCliente extends AppCompatActivity {
 
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put("Nombre", nombre.getText().toString());
-        contentValues.put("Direccion", direccion.getText().toString());
-        contentValues.put("Telefono", telefono.getText().toString());
-        contentValues.put("Email", email.getText().toString());
+        contentValues.put("nombre", nombre.getText().toString());
+        contentValues.put("direccion", direccion.getText().toString());
+        contentValues.put("telefono", telefono.getText().toString());
+        contentValues.put("email", email.getText().toString());
 
-        db.insert("Datos_cliente", null, contentValues);
+        db.insert("cliente", null, contentValues);
     }
 
     public void cerrar(View v){
