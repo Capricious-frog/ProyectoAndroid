@@ -63,9 +63,8 @@ public class PedidoKebab extends AppCompatActivity {
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
 
             String[] campos = new String[] {"MAX(cod_pedido)"};
-            String[] args = new String[] {String.valueOf(cod_cliente)};
 
-            Cursor c = db.query("kebabs", campos, "cod_cliente = ?", args, null, null, null);
+            Cursor c = db.query("pedido, cliente", campos, "pedido.cod_cliente = cliente.cod_cliente", null, null, null, null);
 
             //Nos aseguramos de que no existe al menos un registro
             cod_pedido = c.getInt(0);
@@ -129,7 +128,7 @@ public class PedidoKebab extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         if (cantidad != 0) {
-            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES (" + cod_pedido + ",'" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
+            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES (" + cod_pedido + ",'" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + cantidad  + "')");
         }
     }
 
@@ -141,6 +140,7 @@ public class PedidoKebab extends AppCompatActivity {
 
         db.execSQL("DELETE FROM bebidas WHERE pedido_completado = 0");
         db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
+        db.execSQL("DELETE FROM pedido WHERE MAX(cod_pedido)");
     }
 
     public void cerrar(View v){

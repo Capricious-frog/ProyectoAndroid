@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity {
     EditText nombre, direccion, telefono, email;
+    boolean valor_encontrado = false;
 
 
     @Override
@@ -80,6 +81,10 @@ public class DatosCliente extends AppCompatActivity {
 
             Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
 
+            direccion.getText().clear();
+            telefono.getText().clear();
+            email.getText().clear();
+
             //Nos aseguramos de que existe al menos un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
@@ -95,9 +100,14 @@ public class DatosCliente extends AppCompatActivity {
             direccion.setText(direcc);
             telefono.setText(telf);
             email.setText(em);
+
+            valor_encontrado = !direccion.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !email.getText().toString().isEmpty();
+
         } else {
             Toast toast = Toast.makeText(this, "No hay nada en el campo del nombre.", Toast.LENGTH_SHORT);
             toast.show();
+
+            valor_encontrado = false;
         }
     }
 
@@ -106,15 +116,16 @@ public class DatosCliente extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         //db.execSQL("INSERT INTO Datos_cliente (Nombre, Direccion, Telefono, Email) VALUES (" + nombre.getText().toString() + ", " + direccion.getText().toString() + ", " + telefono.getText().toString() + ", " + email.getText().toString() + ")");
+        if (!valor_encontrado) {
+            ContentValues contentValues = new ContentValues();
 
-        ContentValues contentValues = new ContentValues();
+            contentValues.put("nombre", nombre.getText().toString());
+            contentValues.put("direccion", direccion.getText().toString());
+            contentValues.put("telefono", telefono.getText().toString());
+            contentValues.put("email", email.getText().toString());
 
-        contentValues.put("nombre", nombre.getText().toString());
-        contentValues.put("direccion", direccion.getText().toString());
-        contentValues.put("telefono", telefono.getText().toString());
-        contentValues.put("email", email.getText().toString());
-
-        db.insert("cliente", null, contentValues);
+            db.insert("cliente", null, contentValues);
+        }
     }
 
     public void cerrar(View v){
