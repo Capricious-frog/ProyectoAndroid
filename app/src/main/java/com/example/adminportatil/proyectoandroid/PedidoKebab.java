@@ -67,9 +67,9 @@ public class PedidoKebab extends AppCompatActivity {
             Cursor c = db.query("pedido, cliente", campos, "pedido.cod_cliente = cliente.cod_cliente", null, null, null, null);
 
             //Nos aseguramos de que no existe al menos un registro
-            cod_pedido = c.getInt(0);
 
             if (!c.moveToFirst()) {
+                cod_pedido = c.getInt(0);
                 intent.putExtra("cod_pedido", cod_pedido);
             }
 
