@@ -76,7 +76,7 @@ public class DatosCliente extends AppCompatActivity {
             String[] campos = new String[] {"direccion", "telefono", "email"};
             String[] args = new String[] {nombre.getText().toString()};
 
-            String nom = null,  direcc = null, telf = null, em = null;
+            String direcc = null, telf = null, em = null;
 
             Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
 
