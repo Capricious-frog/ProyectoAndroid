@@ -23,6 +23,10 @@ public class PedidoBebidasActivity extends AppCompatActivity {
     }
 
     public void lanzarResumentPedido(View view){
+        int contador = 0;
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+
         ArrayList<Spinner> spinners_cantidad = new ArrayList<>();
         ConstraintLayout constraint_layout = findViewById(R.id.cl);
 
@@ -33,6 +37,8 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         for (int i = 0; i < constraint_layout.getChildCount(); i++) {
             final View child = constraint_layout.getChildAt(i);
             if(child instanceof Spinner){
+                contador++;
+                db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + contador + ", " + (((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + 1) + ")");
                 spinners_cantidad.add((Spinner) constraint_layout.getChildAt(i));
             }
         }
