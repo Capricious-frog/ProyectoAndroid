@@ -12,14 +12,13 @@ import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity {
     EditText nombre, direccion, telefono, email;
-    KebabsSQLiteHelper base_de_datos;
+    KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+    SQLiteDatabase db = kqlh.getWritableDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_cliente);
-
-        base_de_datos = new KebabsSQLiteHelper(this);
 
         //Recibe los intent para pasarlos
         nombre = findViewById(R.id.nombre);
@@ -30,8 +29,7 @@ public class DatosCliente extends AppCompatActivity {
 
     public void lanzarPedidoKebab(View view){
         Toast toast;
-        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-        SQLiteDatabase db = kqlh.getWritableDatabase();
+
         String[] campos = new String[] {"cod_cliente"};
         String[] args = new String[] {nombre.getText().toString()};
 
@@ -70,8 +68,6 @@ public class DatosCliente extends AppCompatActivity {
 
     public void buscar_cliente(View view) {
         if(!nombre.getText().toString().isEmpty()) {
-            KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-            SQLiteDatabase db = kqlh.getWritableDatabase();
 
             String[] campos = new String[] {"direccion", "telefono", "email"};
             String[] args = new String[] {nombre.getText().toString()};
@@ -102,9 +98,6 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void añadirDatos(){
-        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-        SQLiteDatabase db = kqlh.getWritableDatabase();
-
         //db.execSQL("INSERT INTO Datos_cliente (Nombre, Direccion, Telefono, Email) VALUES (" + nombre.getText().toString() + ", " + direccion.getText().toString() + ", " + telefono.getText().toString() + ", " + email.getText().toString() + ")");
 
         ContentValues contentValues = new ContentValues();
