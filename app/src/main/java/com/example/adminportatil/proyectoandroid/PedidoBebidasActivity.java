@@ -54,6 +54,16 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         }
     }
 
+    protected void onDestroy() {
+        super.onDestroy();
+
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+
+        db.execSQL("DELETE FROM bebidas WHERE pedido_completado = 0");
+        db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
+    }
+
     public void cerrar(View v){
         finish();
         System.exit(0);

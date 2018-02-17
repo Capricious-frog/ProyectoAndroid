@@ -2,6 +2,7 @@ package com.example.adminportatil.proyectoandroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class PedidoKebab extends AppCompatActivity {
             t = (TableRow) tabla.getChildAt(i);
             array_kebab.add(new ArrayList<Integer>());
 
-            añadirDatos((Spinner) t.getChildAt(0), (Spinner) t.getChildAt(1), (Spinner) t.getChildAt(2), (Spinner) t.getChildAt(3));
+            añadirDatos(((Spinner) t.getChildAt(0)).getSelectedItemPosition(), ((Spinner) t.getChildAt(1)).getSelectedItemPosition(), ((Spinner) t.getChildAt(2)).getSelectedItemPosition(), ((Spinner) t.getChildAt(3)).getSelectedItemPosition());
 
             for (int x = 0; x < t.getChildCount(); x++){
                     s = (Spinner) t.getChildAt(x);
@@ -105,15 +106,23 @@ public class PedidoKebab extends AppCompatActivity {
 
     }
 
-    public void añadirDatos(Spinner s0, Spinner s1, Spinner s2, Spinner s3) {
+    public void añadirDatos(int kebab, int carne, int tamano, int cantidad) {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
-
-        if (s3.getSelectedItemPosition() != 0) {
-            db.execSQL("INSERT INTO Pedido_kebab (tipo_kebab, tamaño_kebab, tipo_carne, cantidad) VALUES ('" + tipoKebab[s0.getSelectedItemPosition()] + "', + '" + tamaño[s1.getSelectedItemPosition()] + "', '" + tipo_carne[s2.getSelectedItemPosition()] + "', " + s3.getSelectedItemPosition() + ")");
+        if (cantidad != 0) {
+            db.execSQL("INSERT INTO kebabs (cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES ('" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
         }
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+
+        db.execSQL("DELETE FROM bebidas WHERE pedido_completado = 0");
+        db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
     }
 
     public void cerrar(View v){
