@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity {
-    EditText nombre, direccion, telefono, email;
+    EditText nombre, direccion, telefono, email, cod_cliente;
     KebabsSQLiteHelper base_de_datos;
 
     @Override
@@ -26,6 +26,7 @@ public class DatosCliente extends AppCompatActivity {
         direccion = findViewById(R.id.direccion);
         telefono = findViewById(R.id.telefono);
         email = findViewById(R.id.email);
+        cod_cliente = findViewById(R.id.cod_cliente);
     }
 
     public void lanzarPedidoKebab(View view){
@@ -41,14 +42,7 @@ public class DatosCliente extends AppCompatActivity {
                 toast = Toast.makeText(this, "El numero de telefono tiene menos que 9 digitos.", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
-                KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-                SQLiteDatabase db = kqlh.getWritableDatabase();
-                Cursor c = db.rawQuery("SELECT MAX(cod_pedido) FROM Datos_cliente", null);
-
                 Intent intent = new Intent(this, PedidoKebab.class);
-                if (c.moveToFirst()) {
-                    intent.putExtra("codigo_pedido", String.valueOf(c.getString(0)));
-                }
 
                 añadirDatos();
 
@@ -63,32 +57,36 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void buscar_cliente(View view) {
-        if(!nombre.getText().toString().isEmpty()) {
+        if(!cod_cliente.getText().toString().isEmpty()) {
             KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
             SQLiteDatabase db = kqlh.getWritableDatabase();
 
-            String[] campos = new String[] {"Direccion", "Telefono", "Email"};
-            String[] args = new String[] {nombre.getText().toString()};
+            String[] campos = new String[] {"nombre", "direccion", "telefono", "email"};
+            String[] args = new String[] {cod_cliente.getText().toString()};
 
-            String direcc = null, telf = null, em = null;
+            String nom = null,  direcc = null, telf = null, em = null;
 
-            Cursor c = db.query("Datos_cliente", campos, "Nombre = ?", args, null, null, null);
+            Cursor c = db.query("cliente", campos, "cod_cliente = ?", args, null, null, null);
 
             //Nos aseguramos de que existe al menos un registro
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    direcc= c.getString(0);
-                    telf = c.getString(1);
-                    em = c.getString(2);
+                    nom= c.getString(0);
+                    direcc= c.getString(1);
+                    telf = c.getString(2);
+                    em = c.getString(3);
                 } while(c.moveToNext());
             }
 
+            c.close();
+
+            nombre.setText(nom);
             direccion.setText(direcc);
             telefono.setText(telf);
             email.setText(em);
         } else {
-            Toast toast = Toast.makeText(this, "No hay nada en el campo del nombre.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "No hay nada en el campo del codigo de cliente.", Toast.LENGTH_SHORT);
             toast.show();
         }
     }

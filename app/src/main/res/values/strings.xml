@@ -22,6 +22,7 @@
     <string name="enviar">enviar</string>
     <string name="todo">TODO</string>
     <string name="buscar_cliente">Buscar cliente</string>
+    <string name="codigo_cliente">Codigo cliente</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>
