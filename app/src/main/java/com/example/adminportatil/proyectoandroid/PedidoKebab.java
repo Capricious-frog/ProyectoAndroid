@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
-    String cod_pedido;
+    String cod_cliente;
     String[] foo_array;
 
     @Override
@@ -26,14 +26,14 @@ public class PedidoKebab extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_kebab);
 
         Intent intent = getIntent();
-        cod_pedido = intent.getStringExtra("codigo_pedido");
+        cod_cliente = intent.getStringExtra("cod_cliente");
 
         //Recibe la lista de kebabs desde strings.xml
         Context context=getApplicationContext();
         foo_array = context.getResources().getStringArray(R.array.tipo_kebab);
     }
 
-    public void lanzarPedidoKebab(View view){
+    public void lanzarPedidoBebidas(View view){
 
         TableLayout tabla = findViewById(R.id.tablaKebabs);
         Spinner s;
@@ -58,7 +58,7 @@ public class PedidoKebab extends AppCompatActivity {
         if(!validaKebab(array_kebab)) {
 
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
-            intent.putExtra("codigo_pedido", cod_pedido);
+            intent.putExtra("cod_cliente", cod_cliente);
 
             startActivity(intent);
         } else {
@@ -111,7 +111,7 @@ public class PedidoKebab extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         if (cantidad != 0) {
-            db.execSQL("INSERT INTO kebabs (cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES ('" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
+            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_kebab, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES ( , , '" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
         }
     }
 
