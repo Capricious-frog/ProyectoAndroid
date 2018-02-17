@@ -1,6 +1,7 @@
 package com.example.adminportatil.proyectoandroid;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class PedidoBebidasActivity extends AppCompatActivity {
-    String cod_pedido, cod_cliente;
+    int cod_pedido, cod_cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,8 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_bebidas);
 
         Intent intent = getIntent();
-        cod_cliente = intent.getStringExtra("codigo_cliente");
-        cod_pedido = intent.getStringExtra("codigo_pedido");
+        cod_cliente = intent.getIntExtra("codigo_cliente", 0);
+        cod_pedido = intent.getIntExtra("codigo_pedido", 0);
     }
 
     public void lanzarResumentPedido(View view){
@@ -28,6 +30,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         ConstraintLayout constraint_layout = findViewById(R.id.cl);
 
         Intent intent = new Intent(this, ResumenPedido.class);
+        intent.putExtra("codigo_cliente", cod_cliente);
         intent.putExtra("codigo_pedido", cod_pedido);
 
         for (int i = 0; i < constraint_layout.getChildCount(); i++) {
