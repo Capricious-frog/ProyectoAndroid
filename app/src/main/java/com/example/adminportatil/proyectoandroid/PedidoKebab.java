@@ -20,6 +20,9 @@ public class PedidoKebab extends AppCompatActivity {
     String cod_cliente;
     String[] foo_array;
 
+    KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+    SQLiteDatabase db = kqlh.getWritableDatabase();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,19 @@ public class PedidoKebab extends AppCompatActivity {
         if(!validaKebab(array_kebab)) {
 
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
+
+            String[] campos = new String[] {"MAX(cod_pedido)"};
+            String[] args = new String[] {cod_cliente};
+
+            Cursor c = db.query("kebabs", campos, "cod_cliente = ?", args, null, null, null);
+
+            //Nos aseguramos de que no existe al menos un registro
+            if (!c.moveToFirst()) {
+                intent.putExtra("cod_pedido", c.getString(0));
+            }
+
+            c.close();
+
             intent.putExtra("cod_cliente", cod_cliente);
 
             startActivity(intent);
