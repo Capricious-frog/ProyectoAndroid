@@ -27,7 +27,6 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        ArrayList<Spinner> spinners_cantidad = new ArrayList<>();
         ConstraintLayout constraint_layout = findViewById(R.id.cl);
 
         Intent intent = new Intent(this, ResumenPedido.class);
@@ -39,26 +38,10 @@ public class PedidoBebidasActivity extends AppCompatActivity {
             if(child instanceof Spinner){
                 contador++;
                 db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + contador + ", " + (((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + 1) + ")");
-                spinners_cantidad.add((Spinner) constraint_layout.getChildAt(i));
             }
         }
-
-        añadirDatos(spinners_cantidad);
 
         startActivity(intent);
-    }
-
-    public void añadirDatos(ArrayList<Spinner> spinners_cantidad){
-        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-        SQLiteDatabase db = kqlh.getWritableDatabase();
-
-        String[] strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
-
-        for (int i = 0; i < strings_bebidas.length; i++) {
-            if (spinners_cantidad.get(i).getSelectedItemPosition() != 0){
-                db.execSQL("INSERT INTO Pedido_bebida (nombre_bebida, cantidad) VALUES ('" + strings_bebidas[i] + "', " + spinners_cantidad.get(i).getSelectedItemPosition() + ")");
-            }
-        }
     }
 
     protected void onDestroy() {
