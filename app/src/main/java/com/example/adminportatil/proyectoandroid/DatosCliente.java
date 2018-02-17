@@ -20,7 +20,6 @@ public class DatosCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_cliente);
 
-        //Recibe los intent para pasarlos
         nombre = findViewById(R.id.nombre);
         direccion = findViewById(R.id.direccion);
         telefono = findViewById(R.id.telefono);
@@ -49,7 +48,7 @@ public class DatosCliente extends AppCompatActivity {
 
                 Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
 
-                //Nos aseguramos de que existe al menos un registro
+                //Nos aseguramos de que no existe al menos un registro
                 if (!c.moveToFirst()) {
                     intent.putExtra("cod_cliente", c.getString(0));
                 }
