@@ -17,11 +17,8 @@ import java.util.ArrayList;
 public class PedidoKebab extends AppCompatActivity {
 
     int contador = 1;
-    String cod_cliente;
+    int cod_cliente, cod_pedido;
     String[] foo_array;
-
-    KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-    SQLiteDatabase db = kqlh.getWritableDatabase();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +26,7 @@ public class PedidoKebab extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_kebab);
 
         Intent intent = getIntent();
-        cod_cliente = intent.getStringExtra("cod_cliente");
+        cod_cliente = intent.getIntExtra("cod_cliente", 0);
 
         //Recibe la lista de kebabs desde strings.xml
         Context context=getApplicationContext();
@@ -37,6 +34,9 @@ public class PedidoKebab extends AppCompatActivity {
     }
 
     public void lanzarPedidoBebidas(View view){
+
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
 
         TableLayout tabla = findViewById(R.id.tablaKebabs);
         Spinner s;
@@ -63,13 +63,15 @@ public class PedidoKebab extends AppCompatActivity {
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
 
             String[] campos = new String[] {"MAX(cod_pedido)"};
-            String[] args = new String[] {cod_cliente};
+            String[] args = new String[] {String.valueOf(cod_cliente)};
 
             Cursor c = db.query("kebabs", campos, "cod_cliente = ?", args, null, null, null);
 
             //Nos aseguramos de que no existe al menos un registro
+            cod_pedido = c.getInt(0);
+
             if (!c.moveToFirst()) {
-                intent.putExtra("cod_pedido", c.getString(0));
+                intent.putExtra("cod_pedido", cod_pedido);
             }
 
             c.close();
@@ -127,7 +129,7 @@ public class PedidoKebab extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         if (cantidad != 0) {
-            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_kebab, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES ( , , '" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
+            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES (" + cod_pedido + ",'" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + (cantidad + 1) + "')");
         }
     }
 

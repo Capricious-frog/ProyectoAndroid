@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 
 public class PedidoBebidasActivity extends AppCompatActivity {
-    String cod_pedido;
+    String cod_pedido, cod_cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_bebidas);
 
         Intent intent = getIntent();
+        cod_cliente = intent.getStringExtra("codigo_cliente");
         cod_pedido = intent.getStringExtra("codigo_pedido");
     }
 
