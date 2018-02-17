@@ -57,5 +57,11 @@ public class KebabsSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO tamano (nombre_tamano, precio) VALUES ('Completo', 1.00)");
 
         //Bebidas
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Refesco_cola', 1,00)");
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Refresco_limon', 1.00)");
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Refresco_naranja', 1.00)");
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Vino', 8.00)");
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Cerveza', 1.50)");
+        db.execSQL("INSERT INTO info_bebida (nombre_bebida, precio) VALUES ('Agua', 0.50)");
     }
 }
