@@ -69,7 +69,7 @@ public class PedidoKebab extends AppCompatActivity {
             //Nos aseguramos de que no existe al menos un registro
 
             if (!c.moveToFirst()) {
-                cod_pedido = c.getInt(1);
+                cod_pedido = c.getInt(0);
                 intent.putExtra("cod_pedido", cod_pedido);
             }
 
