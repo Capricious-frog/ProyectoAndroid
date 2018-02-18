@@ -54,7 +54,7 @@ public class ResumenPedido extends AppCompatActivity {
 
 
         //Se recoge la informacion del pedido hecho por el cliente
-        Cursor datos_cliente = db.query("cliente", campos_datos, "pedido_completado = 0 AND cod_cliente = ?", ccli, null, null, null);
+        Cursor datos_cliente = db.query("cliente", campos_datos, "cod_cliente = ?", ccli, null, null, null);
         Cursor busqueda_kebabs = db.query("kebabs", campos_kebab, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
         Cursor busqueda_bebidas = db.query("bebidas", campos_bebida, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
 
