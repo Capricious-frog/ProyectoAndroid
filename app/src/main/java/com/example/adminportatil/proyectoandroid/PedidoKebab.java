@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class PedidoKebab extends AppCompatActivity {
@@ -29,11 +30,11 @@ public class PedidoKebab extends AppCompatActivity {
         cod_cliente = intent.getIntExtra("cod_cliente", 0);
 
         //Recibe la lista de kebabs desde strings.xml
-        Context context=getApplicationContext();
+        Context context = getApplicationContext();
         foo_array = context.getResources().getStringArray(R.array.tipo_kebab);
     }
 
-    public void lanzarPedidoBebidas(View view){
+    public void lanzarPedidoBebidas(View view) {
 
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
@@ -51,18 +52,18 @@ public class PedidoKebab extends AppCompatActivity {
 
             añadirDatos(((Spinner) t.getChildAt(0)).getSelectedItemPosition(), ((Spinner) t.getChildAt(1)).getSelectedItemPosition(), ((Spinner) t.getChildAt(2)).getSelectedItemPosition(), ((Spinner) t.getChildAt(3)).getSelectedItemPosition());
 
-            for (int x = 0; x < t.getChildCount(); x++){
-                    s = (Spinner) t.getChildAt(x);
-                    array_kebab.get(i).add(x, s.getSelectedItemPosition());
+            for (int x = 0; x < t.getChildCount(); x++) {
+                s = (Spinner) t.getChildAt(x);
+                array_kebab.get(i).add(x, s.getSelectedItemPosition());
             }
 
         }
 
-        if(!validaKebab(array_kebab)) {
+        if (!validaKebab(array_kebab)) {
 
             Intent intent = new Intent(this, PedidoBebidasActivity.class);
 
-            String[] campos = new String[] {"MAX(cod_pedido)"};
+            String[] campos = new String[]{"MAX(cod_pedido)"};
 
             Cursor c = db.query("pedido, cliente", campos, "pedido.cod_cliente = cliente.cod_cliente", null, null, null, null);
 
@@ -84,17 +85,17 @@ public class PedidoKebab extends AppCompatActivity {
         }
     }
 
-    public boolean validaKebab(ArrayList<ArrayList<Integer>> array_kebab){
+    public boolean validaKebab(ArrayList<ArrayList<Integer>> array_kebab) {
         int contador = 0;
 
         //Comprueba si al menos hay un spinner de la cantidad de kebabs que sea mayor que 0
-        for (int i = 0; i < array_kebab.size(); i++){
-            if(array_kebab.get(i).get(3) != 0){
+        for (int i = 0; i < array_kebab.size(); i++) {
+            if (array_kebab.get(i).get(3) != 0) {
                 contador++;
             }
         }
 
-        return contador == 0 ;
+        return contador == 0;
     }
 
     public void anadir_fila(View v) {
@@ -112,9 +113,9 @@ public class PedidoKebab extends AppCompatActivity {
             tl.addView(rowView);
 
         } else {
-            try{
+            try {
                 //Si ya hay un toast en pantalla no te deja añadir otro
-                 toast.getView().isShown();
+                toast.getView().isShown();
             } catch (Exception e) {
                 System.out.println("Ya hay un toast en pantalla.");
             }
@@ -128,7 +129,7 @@ public class PedidoKebab extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         if (cantidad != 0) {
-            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES (" + cod_pedido + ",'" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + cantidad  + "')");
+            db.execSQL("INSERT INTO kebabs (cod_pedido, cod_tipo_kebab, cod_tipo_carne, cod_tamano, cantidad) VALUES (" + cod_pedido + ",'" + String.valueOf(kebab + 1) + "', '" + String.valueOf(carne + 1) + "', '" + String.valueOf(tamano + 1) + "', '" + cantidad + "')");
         }
     }
 
@@ -143,7 +144,7 @@ public class PedidoKebab extends AppCompatActivity {
         db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
     }
 
-    public void cerrar(View v){
+    public void cerrar(View v) {
         finish();
         System.exit(0);
     }

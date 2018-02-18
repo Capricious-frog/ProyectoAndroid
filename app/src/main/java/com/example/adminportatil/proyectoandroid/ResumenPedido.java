@@ -70,9 +70,9 @@ public class ResumenPedido extends AppCompatActivity {
         if (datos_cliente.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                nombre= datos_cliente.getString(0);
-                direccion= datos_cliente.getString(1);
-            } while(datos_cliente.moveToNext());
+                nombre = datos_cliente.getString(0);
+                direccion = datos_cliente.getString(1);
+            } while (datos_cliente.moveToNext());
         }
 
         //Guarda todos los tipos de kebab
@@ -81,7 +81,7 @@ public class ResumenPedido extends AppCompatActivity {
             do {
                 tipo_kebab.add(busqueda_tipo_kebab.getString(0));
                 precio_tipo_kebab.add(busqueda_tipo_kebab.getString(1));
-            } while(busqueda_tipo_kebab.moveToNext());
+            } while (busqueda_tipo_kebab.moveToNext());
         }
 
         //Guarda todos los tipos de carne
@@ -90,7 +90,7 @@ public class ResumenPedido extends AppCompatActivity {
             do {
                 tipo_carne.add(busqueda_tipo_carne.getString(0));
                 precio_tipo_carne.add(busqueda_tipo_carne.getString(1));
-            } while(busqueda_tipo_carne.moveToNext());
+            } while (busqueda_tipo_carne.moveToNext());
         }
 
         //Guarda todos los tipos de tamaños
@@ -99,7 +99,7 @@ public class ResumenPedido extends AppCompatActivity {
             do {
                 tamano.add(busqueda_tamano.getString(0));
                 precio_tamano.add(busqueda_tamano.getString(1));
-            } while(busqueda_tamano.moveToNext());
+            } while (busqueda_tamano.moveToNext());
         }
 
         //Guarda todos los nombres de bebidas
@@ -108,7 +108,7 @@ public class ResumenPedido extends AppCompatActivity {
             do {
                 info_bebida.add(busqueda_info_bebida.getString(0));
                 precio_info_bebida.add(busqueda_info_bebida.getString(1));
-            } while(busqueda_info_bebida.moveToNext());
+            } while (busqueda_info_bebida.moveToNext());
         }
 
         //Utilizando la información de la base de datos, rellenamos el edit text
@@ -120,8 +120,8 @@ public class ResumenPedido extends AppCompatActivity {
             do {
                 texto.append(busqueda_kebabs.getString(0)); //Tipo kebab
 
-                for(int i = 0; i < tipoKebab.length; i++){
-                    if(Objects.equals(busqueda_kebabs.getString(0), tipoKebab[i])){
+                for (int i = 0; i < tipoKebab.length; i++) {
+                    if (Objects.equals(busqueda_kebabs.getString(0), tipoKebab[i])) {
                         precio_pedido += precio_tipo_kebab[i];
                     }
                 }
@@ -129,8 +129,8 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
 
-                for(int i = 0; i < strings_bebidas.length; i++){
-                    if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
+                for (int i = 0; i < strings_bebidas.length; i++) {
+                    if (Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])) {
                         precio_pedido += precio_tamaño[i];
                     }
                 }
@@ -138,8 +138,8 @@ public class ResumenPedido extends AppCompatActivity {
                 texto.append("\n");
                 texto.append(busqueda_kebabs.getString(2)); //Tipo carne
 
-                for(int i = 0; i < strings_bebidas.length; i++){
-                    if(Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])){
+                for (int i = 0; i < strings_bebidas.length; i++) {
+                    if (Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])) {
                         precio_pedido += precio_tipo_carne[i];
                     }
                 }
@@ -150,7 +150,7 @@ public class ResumenPedido extends AppCompatActivity {
                 precio += precio_pedido * Integer.parseInt(busqueda_kebabs.getString(3));
 
                 texto.append("\n");
-            } while(busqueda_kebabs.moveToNext());
+            } while (busqueda_kebabs.moveToNext());
         }
 
         texto.append("\n\n--Bebidas--");
@@ -161,8 +161,8 @@ public class ResumenPedido extends AppCompatActivity {
                 int precio_pedido2 = 1;
                 texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
 
-                for(int i = 0; i < strings_bebidas.length; i++){
-                    if(Objects.equals(busqueda_bebidas.getString(0), strings_bebidas[i])){
+                for (int i = 0; i < strings_bebidas.length; i++) {
+                    if (Objects.equals(busqueda_bebidas.getString(0), strings_bebidas[i])) {
                         precio_pedido2 += precio_bebidas[i];
                     }
                 }
@@ -173,12 +173,12 @@ public class ResumenPedido extends AppCompatActivity {
                 precio += precio_pedido2 * Integer.parseInt(busqueda_bebidas.getString(1));
 
                 texto.append("\n");
-            } while(busqueda_bebidas.moveToNext());
+            } while (busqueda_bebidas.moveToNext());
         }
 
         texto.append("\n\n--Regalo--");
 
-        if(precio > 15) {
+        if (precio > 15) {
             texto.append("\nPeluche de android");
         } else {
             texto.append("\nNada");
@@ -193,7 +193,7 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\n\n--Precio--");
         texto.append("\nPrecio neto: " + decimalFormat.format(precio) + "€");
         texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
-        texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
+        texto.append("\n\nTotal: " + decimalFormat.format(precio + precio * 0.21f) + "€");
 
         datos_cliente.close();
         busqueda_kebabs.close();
@@ -204,7 +204,7 @@ public class ResumenPedido extends AppCompatActivity {
         busqueda_info_bebida.close();
     }
 
-    public void enviar(View v){
+    public void enviar(View v) {
         //Este es el codigo que permite compartir el contenido del editText
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 
@@ -218,7 +218,7 @@ public class ResumenPedido extends AppCompatActivity {
         startActivity(Intent.createChooser(sharingIntent, "Enviar por"));
     }
 
-    public void cerrar(View v){
+    public void cerrar(View v) {
         finish();
         System.exit(0);
     }

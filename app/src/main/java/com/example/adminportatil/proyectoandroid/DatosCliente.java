@@ -26,23 +26,23 @@ public class DatosCliente extends AppCompatActivity {
         email = findViewById(R.id.email);
     }
 
-    public void lanzarPedidoKebab(View view){
+    public void lanzarPedidoKebab(View view) {
         Toast toast;
 
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        String[] campos = new String[] {"cod_cliente"};
-        String[] args = new String[] {nombre.getText().toString()};
+        String[] campos = new String[]{"cod_cliente"};
+        String[] args = new String[]{nombre.getText().toString()};
         int codigo_cliente = 1;
 
         //Validacion de datos
-        if(!nombre.getText().toString().isEmpty() && !direccion.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !email.getText().toString().isEmpty()){
+        if (!nombre.getText().toString().isEmpty() && !direccion.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !email.getText().toString().isEmpty()) {
 
-            if(telefono.getText().toString().length() > 9) {
+            if (telefono.getText().toString().length() > 9) {
                 toast = Toast.makeText(this, "El numero de telefono tiene mas que 9 digitos.", Toast.LENGTH_SHORT);
                 toast.show();
-            }else if (telefono.getText().toString().length() < 9) {
+            } else if (telefono.getText().toString().length() < 9) {
                 toast = Toast.makeText(this, "El numero de telefono tiene menos que 9 digitos.", Toast.LENGTH_SHORT);
                 toast.show();
             } else {
@@ -73,13 +73,13 @@ public class DatosCliente extends AppCompatActivity {
     }
 
     public void buscar_cliente(View view) {
-        if(!nombre.getText().toString().isEmpty()) {
+        if (!nombre.getText().toString().isEmpty()) {
 
             KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
             SQLiteDatabase db = kqlh.getWritableDatabase();
 
-            String[] campos = new String[] {"direccion", "telefono", "email"};
-            String[] args = new String[] {nombre.getText().toString()};
+            String[] campos = new String[]{"direccion", "telefono", "email"};
+            String[] args = new String[]{nombre.getText().toString()};
 
             String direcc = null, telf = null, em = null;
 
@@ -93,10 +93,10 @@ public class DatosCliente extends AppCompatActivity {
             if (c.moveToFirst()) {
                 //Recorremos el cursor hasta que no haya más registros
                 do {
-                    direcc= c.getString(0);
+                    direcc = c.getString(0);
                     telf = c.getString(1);
                     em = c.getString(2);
-                } while(c.moveToNext());
+                } while (c.moveToNext());
             }
 
             c.close();
@@ -115,7 +115,7 @@ public class DatosCliente extends AppCompatActivity {
         }
     }
 
-    public void añadirDatos(){
+    public void añadirDatos() {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
@@ -132,7 +132,7 @@ public class DatosCliente extends AppCompatActivity {
         }
     }
 
-    public void cerrar(View v){
+    public void cerrar(View v) {
         finish();
         System.exit(0);
     }

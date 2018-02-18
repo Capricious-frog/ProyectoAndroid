@@ -28,7 +28,7 @@ public class KebabsSQLiteHelper extends SQLiteOpenHelper {
         crearBd(db);
     }
 
-    private void crearBd(SQLiteDatabase db){
+    private void crearBd(SQLiteDatabase db) {
         //Creacion de las tablas
         db.execSQL("CREATE TABLE \"cliente\" ( 'cod_cliente' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE DEFAULT 1, 'nombre' TEXT NOT NULL, 'direccion' TEXT NOT NULL, 'telefono' TEXT NOT NULL, 'email' TEXT NOT NULL )");
         db.execSQL("CREATE TABLE \"pedido\" ( 'cod_pedido' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'cod_cliente' INTEGER NOT NULL UNIQUE DEFAULT 1, 'pedido_completado' INTEGER NOT NULL DEFAULT 0, FOREIGN KEY('cod_pedido') REFERENCES 'cliente'('cod_cliente') )");
