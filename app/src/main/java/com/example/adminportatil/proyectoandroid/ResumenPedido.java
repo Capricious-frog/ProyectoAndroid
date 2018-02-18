@@ -71,10 +71,8 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda los datos del cliente
         if (datos_cliente.moveToFirst()) {
-            do {
                 nombre = datos_cliente.getString(0);
                 direccion = datos_cliente.getString(1);
-            } while (datos_cliente.moveToNext());
         }
 
         //Guarda todos los tipos de kebab
@@ -117,13 +115,13 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 texto.append("\n");
-                texto.append(tipo_kebab.get(busqueda_kebabs.getInt(0)) + " "); //Tipo kebab
-                texto.append(tipo_carne.get(busqueda_kebabs.getInt(1)) + " "); //Tipo carne
-                texto.append(tamano.get(busqueda_kebabs.getInt(2)) + " "); //Tamaño
+                texto.append(tipo_kebab.get(busqueda_kebabs.getInt(0) - 1) + " "); //Tipo kebab
+                texto.append(tipo_carne.get(busqueda_kebabs.getInt(1) - 1) + " "); //Tipo carne
+                texto.append(tamano.get(busqueda_kebabs.getInt(2) - 1) + " "); //Tamaño
                 texto.append("x" + String.valueOf(busqueda_kebabs.getInt(3))); //Cantidad
                 texto.append("\n");
 
-                precio += (precio_tipo_kebab.get(busqueda_kebabs.getInt(0)) + precio_tipo_carne.get(busqueda_kebabs.getInt(1)) + precio_tamano.get(busqueda_kebabs.getInt(2))) * busqueda_kebabs.getInt(3);
+                precio += (precio_tipo_kebab.get(busqueda_kebabs.getInt(0) - 1) + precio_tipo_carne.get(busqueda_kebabs.getInt(1) - 1) + precio_tamano.get(busqueda_kebabs.getInt(2) - 1)) * busqueda_kebabs.getInt(3);
 
             } while (busqueda_kebabs.moveToNext());
         }
