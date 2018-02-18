@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
-import java.util.ArrayList;
 
 public class PedidoBebidasActivity extends AppCompatActivity {
     int cod_pedido, cod_cliente;
