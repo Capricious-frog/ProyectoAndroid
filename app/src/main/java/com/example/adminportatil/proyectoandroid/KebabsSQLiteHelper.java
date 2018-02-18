@@ -36,7 +36,7 @@ public class KebabsSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE 'tipo_kebab' ( 'cod_tipo_kebab' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'nombre_tipo_kebab' TEXT NOT NULL UNIQUE, 'precio' INTEGER NOT NULL )");
         db.execSQL("CREATE TABLE 'tipo_carne' ( 'cod_tipo_carne' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'nombre_tipo_carne' INTEGER NOT NULL, 'precio' INTEGER NOT NULL )");
         db.execSQL("CREATE TABLE 'tamano' ( 'cod_tamano' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'nombre_tamano' TEXT NOT NULL UNIQUE, 'precio' INTEGER NOT NULL )");
-        db.execSQL("CREATE TABLE \"bebidas\" ( 'cod_pedido' INTEGER NOT NULL UNIQUE, 'cod_info_bebida' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'cantidad' INTENGER NOT NULL DEFAULT 0, 'pedido_completado' INTEGER NOT NULL DEFAULT 0, FOREIGN KEY('cod_info_bebida') REFERENCES 'bebidas'('cod_bebida'), FOREIGN KEY('cod_pedido') REFERENCES 'pedido'('cod_pedido'))");
+        db.execSQL("CREATE TABLE \"bebidas\" ( 'cod_pedido' INTEGER NOT NULL, 'cod_info_bebida' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'cantidad' INTENGER NOT NULL DEFAULT 0, 'pedido_completado' INTEGER NOT NULL DEFAULT 0, FOREIGN KEY('cod_info_bebida') REFERENCES 'bebidas'('cod_bebida'), FOREIGN KEY('cod_pedido') REFERENCES 'pedido'('cod_pedido'))");
         db.execSQL("CREATE TABLE 'info_bebida' ( 'cod_info_bebida' INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, 'nombre_bebida' TEXT NOT NULL UNIQUE, 'precio' INTEGER NOT NULL )");
 
         /*
