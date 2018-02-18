@@ -55,7 +55,7 @@ public class DatosCliente extends AppCompatActivity {
 
                     //Nos aseguramos de que no existe al menos un registro
                     if (!c.moveToFirst()) {
-                        codigo_cliente = c.getInt(0);
+                        codigo_cliente = c.getInt(0) + 1;
                         intent.putExtra("cod_cliente", (c.getInt(0) + 1));
                     }
 
