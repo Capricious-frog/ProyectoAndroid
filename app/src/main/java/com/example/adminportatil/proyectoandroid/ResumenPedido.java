@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
     int cod_pedido, cod_cliente;
-    float precio = 0;
+    double precio = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +27,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
-
-        double precio_pedido = 1;
 
         String nombre = null, direccion = null;
 
@@ -68,7 +66,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda los datos del cliente
         if (datos_cliente.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
             do {
                 nombre = datos_cliente.getString(0);
                 direccion = datos_cliente.getString(1);
@@ -77,7 +74,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda todos los tipos de kebab
         if (busqueda_tipo_kebab.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
             do {
                 tipo_kebab.add(busqueda_tipo_kebab.getString(0));
                 precio_tipo_kebab.add(busqueda_tipo_kebab.getInt(1));
@@ -86,7 +82,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda todos los tipos de carne
         if (busqueda_tipo_carne.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
             do {
                 tipo_carne.add(busqueda_tipo_carne.getString(0));
                 precio_tipo_carne.add(busqueda_tipo_carne.getInt(1));
@@ -95,7 +90,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda todos los tipos de tamaños
         if (busqueda_tamano.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
             do {
                 tamano.add(busqueda_tamano.getString(0));
                 precio_tamano.add(busqueda_tamano.getInt(1));
@@ -104,7 +98,6 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda todos los nombres de bebidas
         if (busqueda_info_bebida.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
             do {
                 info_bebida.add(busqueda_info_bebida.getString(0));
                 precio_info_bebida.add(busqueda_info_bebida.getInt(1));
@@ -118,7 +111,14 @@ public class ResumenPedido extends AppCompatActivity {
         if (busqueda_kebabs.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                texto.append(""); //Tipo kebab
+                texto.append(tipo_kebab.get(busqueda_kebabs.getInt(0)) + " "); //Tipo kebab
+                texto.append(tipo_carne.get(busqueda_kebabs.getInt(1)) + " "); //Tipo carne
+                texto.append(tamano.get(busqueda_kebabs.getInt(2)) + " "); //Tamaño
+                texto.append(String.valueOf(busqueda_kebabs.getInt(3))); //Cantidad
+                texto.append("\n");
+
+                precio += (precio_tipo_kebab.get(busqueda_kebabs.getInt(0)) + precio_tipo_carne.get(busqueda_kebabs.getInt(1)) + precio_tamano.get(busqueda_kebabs.getInt(2))) * busqueda_kebabs.getInt(3);
+
             } while (busqueda_kebabs.moveToNext());
         }
 
@@ -127,8 +127,10 @@ public class ResumenPedido extends AppCompatActivity {
         if (busqueda_bebidas.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                texto.append(""); //Nombre bebida
+                texto.append(info_bebida.get(busqueda_bebidas.getInt(0)) + " "); //Nombre bebida
+                texto.append(String.valueOf(busqueda_bebidas.getInt(1))); //Cantidad bebida
 
+                precio += precio_info_bebida.get(busqueda_bebidas.getInt(0)) * busqueda_bebidas.getInt(1);
             } while (busqueda_bebidas.moveToNext());
         }
 
