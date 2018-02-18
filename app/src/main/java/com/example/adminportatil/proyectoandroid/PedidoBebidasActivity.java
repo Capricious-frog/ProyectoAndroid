@@ -36,8 +36,10 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         for (int i = 0; i < constraint_layout.getChildCount(); i++) {
             final View child = constraint_layout.getChildAt(i);
             if(child instanceof Spinner){
-                contador++;
-                db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + contador + ", " + (((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + 1) + ")");
+                if(((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() != 0){
+                    contador++;
+                    db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + contador + ", " + ((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + ")");
+                }
             }
         }
 
