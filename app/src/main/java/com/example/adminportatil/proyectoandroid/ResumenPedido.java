@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
-    String cod_pedido, cod_cliente;
+    int cod_pedido, cod_cliente;
     float precio = 0;
 
     @Override
@@ -20,41 +20,50 @@ public class ResumenPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumen_pedido);
 
-        String nombre = null, direccion = null;
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
 
+        double precio_pedido = 1;
+
+        String nombre = null, direccion = null;
+
         Intent intent = getIntent();
 
-        cod_pedido = intent.getStringExtra("codigo_pedido");
-        cod_cliente = intent.getStringExtra("codigo_cliente");
+        cod_pedido = intent.getIntExtra("codigo_pedido", 1);
+        cod_cliente = intent.getIntExtra("codigo_cliente", 1);
 
-        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
-        SQLiteDatabase db = kqlh.getWritableDatabase();
+        String[] campos_datos = {"nombre", "direccion"};
+        String[] campos_kebab = {"cod_tipo_kebab", "cod_tipo_carne", "cod_tamano", "cantidad"};
+        String[] campos_bebida = {"cod_info_bebida", "cantidad"};
+        String[] ccli = {String.valueOf(cod_cliente)};
+        String[] cped = {String.valueOf(cod_pedido)};
 
-        Cursor busqueda_datos = db.query("cliente", campos_datos, "cod_cliente = ?", cped, null, null, null);
+
+
+        Cursor datos_cliente = db.query("cliente", campos_datos, "cod_cliente = ?", ccli, null, null, null);
         Cursor busqueda_kebabs = db.query("kebabs", campos_kebab, "cod_pedido = ?", cped, null, null, null);
         Cursor busqueda_bebidas = db.query("bebidas", campos_bebida, "cod_pedido = ?", cped, null, null, null);
 
-        if (busqueda_datos.moveToFirst()) {
+        //Guarda los datos del cliente
+        if (datos_cliente.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                nombre= busqueda_datos.getString(0);
-            } while(busqueda_datos.moveToNext());
+                nombre= datos_cliente.getString(0);
+                direccion= datos_cliente.getString(1);
+            } while(datos_cliente.moveToNext());
         }
 
-
-        //Utilizando la información sacada anteriormente de la base de datos la muestra en el edit text
+        //Utilizando la información de la base de datos, rellenamos el edit text
         texto.append("Nombre: " + nombre + "\nDireccion: " + direccion);
         texto.append("\n\n--Kebab--");
 
         if (busqueda_kebabs.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                int precio_pedido = 1;
-
                 texto.append(busqueda_kebabs.getString(0)); //Tipo kebab
 
                 for(int i = 0; i < tipoKebab.length; i++){
