@@ -50,18 +50,26 @@ public class DatosCliente extends AppCompatActivity {
 
                 añadirDatos();
 
-                Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
+                if (!valor_encontrado) {
+                    Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
 
-                //Nos aseguramos de que no existe al menos un registro
-                if (!c.moveToFirst()) {
-                    codigo_cliente = c.getInt(0);
-                    intent.putExtra("cod_cliente", c.getInt(0));
+                    //Nos aseguramos de que no existe al menos un registro
+                    if (!c.moveToFirst()) {
+                        codigo_cliente = c.getInt(0);
+                        intent.putExtra("cod_cliente", c.getInt(0));
+                    }
+
+                    db.execSQL("INSERT INTO pedido (cod_cliente) VALUES (" + codigo_cliente + ")");
+
+                    c.close();
+                } else {
+                    Cursor c = db.query("cliente", campos, "nombre = ?", args, null, null, null);
+
+                    if (!c.moveToFirst()) {
+                        intent.putExtra("cod_cliente", c.getInt(0));
+                    }
+                    c.close();
                 }
-
-                db.execSQL("INSERT INTO pedido (cod_cliente) VALUES (" + codigo_cliente + ")");
-
-                c.close();
-
                 startActivity(intent);
             }
 
