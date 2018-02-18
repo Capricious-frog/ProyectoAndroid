@@ -9,14 +9,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
     String cod_pedido, cod_cliente;
-    ArrayList<ArrayList<Integer>> kebab;
-    int[] bebidas;
-    int contador = 0;
     float precio = 0;
 
     @Override
@@ -49,6 +45,8 @@ public class ResumenPedido extends AppCompatActivity {
             } while(busqueda_datos.moveToNext());
         }
 
+
+        //Utilizando la información sacada anteriormente de la base de datos la muestra en el edit text
         texto.append("Nombre: " + nombre + "\nDireccion: " + direccion);
         texto.append("\n\n--Kebab--");
 
@@ -134,109 +132,6 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
         texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
 
-
-
-
-        //Navega por los arrays para conseguir la informacion de las filas y luego las muestra en el edit text
-        //Hace algo similar con las bebidas
-        //Por alguna razon el array sale de pedido kebab con valores pero al llegar aqui todos los valores son 0
-        //Esa es la razon por la que no se muestra correctamente
-        /*
-        for(int i = 0; i < kebab.size(); i++){
-            for(int x = 0; x < kebab.get(i).size(); x++) {
-                ArrayList<Integer> fila = new ArrayList<> (kebab.get(i));
-
-
-                if (x == 0 && fila.get(x) == 0 && fila.get(3) != 0) {
-                    texto.append("\nDönner ");
-
-                    precio += 4f * (float) fila.get(3);
-                } else if (x == 0 && fila.get(x) == 1 && fila.get(3) != 0) {
-                    texto.append("\nDürüm ");
-                    precio += 4.50f * (float) fila.get(3);
-                } else if (x == 0 && fila.get(x) == 2 && fila.get(3) != 0) {
-                    texto.append("\nLahmacum ");
-                    precio += 5f * (float)fila.get(3);
-                } else if (x == 0 && fila.get(x) == 3 && fila.get(3) != 0) {
-                    texto.append("\nShawarms ");
-                    precio += 4.50f * (float)fila.get(3);
-                } else if (x == 0 && fila.get(x) == 4 && fila.get(3) != 0) {
-                    texto.append("\nGyros ");
-                    precio += 5f * (float) fila.get(3);
-                }
-
-                if(x == 1 && fila.get(x) == 0 && fila.get(3) != 0) {
-                    texto.append("Pollo  ");
-                    precio += 0.50f;
-                } else if(x == 1 && fila.get(x) == 1 && fila.get(3) != 0){
-                    texto.append("Ternera  ");
-                    precio += 1f;
-                } else if(x == 1 && fila.get(x) == 2 && fila.get(3) != 0){
-                    texto.append("Cordero  ");
-                    precio += 0.50f;
-                }
-
-                if(x == 2 &&fila.get(x) == 0 && fila.get(3) != 0 && fila.get(3) != 0){
-                    texto.append("Normal  *" + String.valueOf(fila.get(3)));
-                } else if(x == 2 && fila.get(x) == 1 && fila.get(3) != 0 && fila.get(3) != 0){
-                    texto.append("Completo  *" + String.valueOf(fila.get(3)));
-                    precio += 1f;
-                }
-            }
-        }
-
-        texto.append("\n\n--Bebidas--");
-        for (int i = 0; i < bebidas.length; i++){
-            if(bebidas[i] != 0 && i == 0){
-                texto.append("\nCola *" + bebidas[i]);
-                precio += (float) bebidas[i];
-                contador++;
-            } else if (bebidas[i] != 0 && i == 1){
-                texto.append("\nLimon *" + bebidas[i]);
-                precio +=(float)  bebidas[i];
-                contador++;
-            } else if (bebidas[i] != 0 && i == 2){
-                texto.append("\nNaranja *" + bebidas[i]);
-                precio += (float) bebidas[i];
-                contador++;
-            } else if (bebidas[i] != 0 && i == 3){
-                texto.append("\nVino *" + bebidas[i]);
-                precio += 8f * (float) bebidas[i];
-                contador++;
-            } else if (bebidas[i] != 0 && i == 4){
-                texto.append("\nCerveza *" + bebidas[i]);
-                precio += 1.50f * (float) bebidas[i];
-                contador++;
-            } else if (bebidas[i] != 0 && i == 5){
-                texto.append("\nAgua *" + bebidas[i]);
-                precio += 0.50f * (float) bebidas[i];
-                contador++;
-            }
-        }
-
-        if (contador == 0){
-            texto.append("\nNada");
-        }
-
-        texto.append("\n\n--Regalo--");
-
-        if(precio > 15) {
-            texto.append("\nPeluche de android");
-        } else {
-            texto.append("\nNada");
-
-        }
-
-        if (precio > 20) {
-            texto.append("\nVale para el comedor de Cebanc");
-        }
-
-
-        texto.append("\n\n--Precio--");
-        texto.append("\nPrecio neto: " + decimalFormat.format(precio) + "€");
-        texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
-        texto.append("\n\nTotal: " +  decimalFormat.format(precio + precio * 0.21f) + "€");
-        */
     }
 
     public void enviar(View v){
