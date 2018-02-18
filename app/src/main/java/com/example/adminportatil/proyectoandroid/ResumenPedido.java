@@ -47,12 +47,12 @@ public class ResumenPedido extends AppCompatActivity {
         ArrayList<String> tipo_carne = new ArrayList<>();
         ArrayList<String> tamano = new ArrayList<>();
 
-        ArrayList<String> precio_tipo_kebab = new ArrayList<>();
-        ArrayList<String> precio_tipo_carne = new ArrayList<>();
-        ArrayList<String> precio_tamano = new ArrayList<>();
+        ArrayList<Integer> precio_tipo_kebab = new ArrayList<>();
+        ArrayList<Integer> precio_tipo_carne = new ArrayList<>();
+        ArrayList<Integer> precio_tamano = new ArrayList<>();
 
         ArrayList<String> info_bebida = new ArrayList<>();
-        ArrayList<String> precio_info_bebida = new ArrayList<>();
+        ArrayList<Integer> precio_info_bebida = new ArrayList<>();
 
 
         //Se recoge la informacion del pedido hecho por el cliente
@@ -61,7 +61,7 @@ public class ResumenPedido extends AppCompatActivity {
         Cursor busqueda_bebidas = db.query("bebidas", campos_bebida, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
 
         //Se recoge los diferentes tipos de kebab, carne, tamaño y nombre de bebidas. Cada uno se mete en su ArrayList correspondiente.
-        Cursor busqueda_tipo_kebab = db.query("tipo_kebab", campos_datos, "pedido_completado = 0 AND cod_cliente = ?", ccli, null, null, null);
+        Cursor busqueda_tipo_kebab = db.query("tipo_kebab", campos_datos, "pedido_completado = 0 AND cod_cliente = ?", cped, null, null, null);
         Cursor busqueda_tipo_carne = db.query("tipo_carne", campos_kebab, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
         Cursor busqueda_tamano = db.query("tamano", campos_bebida, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
         Cursor busqueda_info_bebida = db.query("info_bebida", campos_bebida, "pedido_completado = 0 AND cod_pedido = ?", cped, null, null, null);
@@ -80,7 +80,7 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 tipo_kebab.add(busqueda_tipo_kebab.getString(0));
-                precio_tipo_kebab.add(busqueda_tipo_kebab.getString(1));
+                precio_tipo_kebab.add(busqueda_tipo_kebab.getInt(1));
             } while (busqueda_tipo_kebab.moveToNext());
         }
 
@@ -89,7 +89,7 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 tipo_carne.add(busqueda_tipo_carne.getString(0));
-                precio_tipo_carne.add(busqueda_tipo_carne.getString(1));
+                precio_tipo_carne.add(busqueda_tipo_carne.getInt(1));
             } while (busqueda_tipo_carne.moveToNext());
         }
 
@@ -98,7 +98,7 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 tamano.add(busqueda_tamano.getString(0));
-                precio_tamano.add(busqueda_tamano.getString(1));
+                precio_tamano.add(busqueda_tamano.getInt(1));
             } while (busqueda_tamano.moveToNext());
         }
 
@@ -107,7 +107,7 @@ public class ResumenPedido extends AppCompatActivity {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 info_bebida.add(busqueda_info_bebida.getString(0));
-                precio_info_bebida.add(busqueda_info_bebida.getString(1));
+                precio_info_bebida.add(busqueda_info_bebida.getInt(1));
             } while (busqueda_info_bebida.moveToNext());
         }
 
@@ -118,38 +118,7 @@ public class ResumenPedido extends AppCompatActivity {
         if (busqueda_kebabs.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                texto.append(busqueda_kebabs.getString(0)); //Tipo kebab
-
-                for (int i = 0; i < tipoKebab.length; i++) {
-                    if (Objects.equals(busqueda_kebabs.getString(0), tipoKebab[i])) {
-                        precio_pedido += precio_tipo_kebab[i];
-                    }
-                }
-
-                texto.append("\n");
-                texto.append(busqueda_kebabs.getString(1)); //Tamaño kebab
-
-                for (int i = 0; i < strings_bebidas.length; i++) {
-                    if (Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])) {
-                        precio_pedido += precio_tamaño[i];
-                    }
-                }
-
-                texto.append("\n");
-                texto.append(busqueda_kebabs.getString(2)); //Tipo carne
-
-                for (int i = 0; i < strings_bebidas.length; i++) {
-                    if (Objects.equals(busqueda_kebabs.getString(0), strings_bebidas[i])) {
-                        precio_pedido += precio_tipo_carne[i];
-                    }
-                }
-
-                texto.append("\n");
-                texto.append(busqueda_kebabs.getString(3)); //Cantidad kebab
-
-                precio += precio_pedido * Integer.parseInt(busqueda_kebabs.getString(3));
-
-                texto.append("\n");
+                texto.append(""); //Tipo kebab
             } while (busqueda_kebabs.moveToNext());
         }
 
@@ -158,21 +127,8 @@ public class ResumenPedido extends AppCompatActivity {
         if (busqueda_bebidas.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
-                int precio_pedido2 = 1;
-                texto.append(busqueda_bebidas.getString(0)); //Nombre bebida
+                texto.append(""); //Nombre bebida
 
-                for (int i = 0; i < strings_bebidas.length; i++) {
-                    if (Objects.equals(busqueda_bebidas.getString(0), strings_bebidas[i])) {
-                        precio_pedido2 += precio_bebidas[i];
-                    }
-                }
-
-                texto.append("\n");
-                texto.append(busqueda_bebidas.getString(1)); //Cantidad bebida
-
-                precio += precio_pedido2 * Integer.parseInt(busqueda_bebidas.getString(1));
-
-                texto.append("\n");
             } while (busqueda_bebidas.moveToNext());
         }
 
@@ -195,6 +151,7 @@ public class ResumenPedido extends AppCompatActivity {
         texto.append("\nIVA: " + decimalFormat.format(precio * 0.21f) + "€");
         texto.append("\n\nTotal: " + decimalFormat.format(precio + precio * 0.21f) + "€");
 
+        //Cierre de los cursores
         datos_cliente.close();
         busqueda_kebabs.close();
         busqueda_bebidas.close();
@@ -202,6 +159,11 @@ public class ResumenPedido extends AppCompatActivity {
         busqueda_tipo_carne.close();
         busqueda_tamano.close();
         busqueda_info_bebida.close();
+
+        db.execSQL("UPDATE pedido SET pedido_completado = 1 WHERE pedido_completado = 0");
+        db.execSQL("UPDATE kebabs SET pedido_completado = 1 WHERE pedido_completado = 0");
+        db.execSQL("UPDATE bebidas SET pedido_completado = 1 WHERE pedido_completado = 0");
+
     }
 
     public void enviar(View v) {
@@ -216,6 +178,17 @@ public class ResumenPedido extends AppCompatActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, String.valueOf(texto.getText()));
 
         startActivity(Intent.createChooser(sharingIntent, "Enviar por"));
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+
+        KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
+        SQLiteDatabase db = kqlh.getWritableDatabase();
+
+        db.execSQL("DELETE FROM pedido WHERE pedido_completado = 0");
+        db.execSQL("DELETE FROM bebidas WHERE pedido_completado = 0");
+        db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
     }
 
     public void cerrar(View v) {
