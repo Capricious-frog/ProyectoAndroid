@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
-    String nom, ap, telf, email, cod_pedido;
+    String cod_pedido, cod_cliente;
     ArrayList<ArrayList<Integer>> kebab;
     int[] bebidas;
     int contador = 0;
@@ -24,11 +24,8 @@ public class ResumenPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumen_pedido);
 
-        String nombre = null, direccion = null, telefono = null;
+        String nombre = null, direccion = null;
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
-        Double[] precio_tipo_kebab = {4.00, 4.50, 5.00, 4.50, 5.00}, precio_tipo_carne = {0.50, 1.0, 0.50}, precio_tamaño = {0.00, 1.00}, precio_bebidas = {1.00, 1.00, 1.00, 8.00, 1.50, 0.50};
-        String[] tipoKebab = {"Döner", "Dürüm", "Lahmacum", "Shawarma", "Gyros"}, tipo_carne = {"Pollo", "Ternera", "Cordero"}, tamaño = {"Normal", "Completo"};
-        String[] strings_bebidas = this.getResources().getStringArray(R.array.bebidas);
 
         TextView texto = findViewById(R.id.editText);
         texto.setEnabled(false);
@@ -36,22 +33,19 @@ public class ResumenPedido extends AppCompatActivity {
         Intent intent = getIntent();
 
         cod_pedido = intent.getStringExtra("codigo_pedido");
-        String[] cped = {cod_pedido}, campos_datos = {"Nombre", "Direccion", "Telefono", "Email"}, campos_kebab = {"tipo_kebab", "tamaño_kebab", "tipo_carne", "cantidad"}, campos_bebida = {"nombre_bebida", "cantidad"};
+        cod_cliente = intent.getStringExtra("codigo_cliente");
 
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        Cursor busqueda_datos = db.query("Datos_cliente", campos_datos, "cod_pedido = ?", cped, null, null, null);
-        Cursor busqueda_kebabs = db.query("Pedido_kebab", campos_kebab, "cod_pedido = ?", cped, null, null, null);
-        Cursor busqueda_bebidas = db.query("Pedido_bebida", campos_bebida, "cod_pedido = ?", cped, null, null, null);
+        Cursor busqueda_datos = db.query("cliente", campos_datos, "cod_cliente = ?", cped, null, null, null);
+        Cursor busqueda_kebabs = db.query("kebabs", campos_kebab, "cod_pedido = ?", cped, null, null, null);
+        Cursor busqueda_bebidas = db.query("bebidas", campos_bebida, "cod_pedido = ?", cped, null, null, null);
 
         if (busqueda_datos.moveToFirst()) {
             //Recorremos el cursor hasta que no haya más registros
             do {
                 nombre= busqueda_datos.getString(0);
-                direccion = busqueda_datos.getString(1);
-                telefono = busqueda_datos.getString(2);
-                email = busqueda_datos.getString(3);
             } while(busqueda_datos.moveToNext());
         }
 

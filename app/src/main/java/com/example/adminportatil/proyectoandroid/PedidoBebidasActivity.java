@@ -52,6 +52,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
+        db.execSQL("DELETE FROM pedido WHERE pedido_completado = 0");
         db.execSQL("DELETE FROM bebidas WHERE pedido_completado = 0");
         db.execSQL("DELETE FROM kebabs WHERE pedido_completado = 0");
     }
