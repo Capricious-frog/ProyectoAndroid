@@ -4,7 +4,7 @@
     package="com.example.adminportatil.proyectoandroid">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning" >
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Portada">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +26,11 @@
         <activity android:name=".DatosCliente" />
         <activity android:name=".PedidoBebidasActivity" />
         <activity android:name=".ResumenPedido" />
-
+        <activity android:name=".Modulo_Mantenimiento" />
+        <activity android:name=".Buscar" />
+        <activity android:name=".Actualizar" />
+        <activity android:name=".Borrar" />
+        <activity android:name=".Insertar"></activity>
     </application>
 
 </manifest>

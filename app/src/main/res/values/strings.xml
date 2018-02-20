@@ -23,6 +23,11 @@
     <string name="todo">TODO</string>
     <string name="buscar_cliente">Buscar cliente</string>
     <string name="codigo_cliente">Codigo cliente</string>
+    <string name="seleccion_lo_que_desees_hacer">SELECCION LO QUE DESEES HACER</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="insertar">Insertar</string>
+    <string name="borrar">Borrar</string>
+    <string name="buscar">Buscar</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>
