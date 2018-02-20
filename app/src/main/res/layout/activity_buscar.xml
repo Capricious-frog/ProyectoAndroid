@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="RadioButton"
+            android:text="Tipos Kebab"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="42dp" />
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RadioButton" />
+            android:text="Pedidos" />
     </RadioGroup>
 
     <Button

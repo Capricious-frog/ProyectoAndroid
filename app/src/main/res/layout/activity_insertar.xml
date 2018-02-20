@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:layout_marginRight="16dp"
-        android:text="Button"
+        android:text="Insertar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Insertar Tipo Kebab"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="43dp"
         android:layout_marginStart="24dp"
-        android:text="TextView"
+        android:text="Insertar Pedido"
         app:layout_constraintBottom_toTopOf="@+id/editText5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -43,8 +43,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="92dp"
         android:ems="10"
+        android:hint="cod_pedido"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,8 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:ems="10"
+        android:hint="cod_cliente"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="@+id/editText3"
         app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
@@ -76,8 +76,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="precio"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5" />
 
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="4dp"
         android:layout_marginTop="36dp"
-        android:text="Button"
+        android:text="Insertar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
@@ -98,8 +98,8 @@
         android:layout_marginBottom="177dp"
         android:layout_marginStart="24dp"
         android:ems="10"
+        android:hint="nombre_tipo_kebab"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

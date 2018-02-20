@@ -140,6 +140,12 @@ public class DatosCliente extends AppCompatActivity {
         }
     }
 
+    public void lanzarMantenimiento(View view){
+        Intent intent = new Intent(this, Modulo_Mantenimiento.class);
+
+        startActivity(intent);
+    }
+
     public void cerrar(View v) {
         finish();
         System.exit(0);

@@ -30,7 +30,8 @@
         <activity android:name=".Buscar" />
         <activity android:name=".Actualizar" />
         <activity android:name=".Borrar" />
-        <activity android:name=".Insertar"></activity>
+        <activity android:name=".Insertar" />
+        <activity android:name=".Mantenimiento"></activity>
     </application>
 
 </manifest>
