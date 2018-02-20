@@ -45,6 +45,7 @@
         android:layout_marginBottom="42dp"
         android:layout_marginEnd="67dp"
         android:layout_marginTop="51dp"
+        android:onClick="buscar"
         android:text="@string/buscar"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"

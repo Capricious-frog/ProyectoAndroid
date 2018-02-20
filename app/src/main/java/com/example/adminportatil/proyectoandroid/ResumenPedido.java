@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class ResumenPedido extends AppCompatActivity {
     int cod_pedido, cod_cliente;
@@ -25,7 +24,7 @@ public class ResumenPedido extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
-        TextView texto = findViewById(R.id.editText);
+        TextView texto = findViewById(R.id.editText2);
         texto.setEnabled(false);
 
         String nombre = null, direccion = null;
@@ -177,7 +176,7 @@ public class ResumenPedido extends AppCompatActivity {
         //Este es el codigo que permite compartir el contenido del editText
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 
-        TextView texto = findViewById(R.id.editText);
+        TextView texto = findViewById(R.id.editText2);
 
         sharingIntent.setType("text/plain");
 
