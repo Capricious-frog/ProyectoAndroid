@@ -1,6 +1,7 @@
 package com.example.adminportatil.proyectoandroid;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,9 @@ public class PedidoBebidasActivity extends AppCompatActivity {
     }
 
     public void lanzarResumentPedido(View view) {
-        int contador = 0;
+        String[] campos = new String[]{"cod_info_bebida"};
+
+
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
@@ -32,15 +35,21 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         intent.putExtra("codigo_cliente", cod_cliente);
         intent.putExtra("codigo_pedido", cod_pedido);
 
+
         for (int i = 0; i < constraint_layout.getChildCount(); i++) {
             final View child = constraint_layout.getChildAt(i);
             if (child instanceof Spinner) {
                 if (((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() != 0) {
-                    contador++;
-                    db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + contador + ", " + ((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + ")");
+                    String[] args = new String[]{((Spinner) constraint_layout.getChildAt(i)).getSelectedItem().toString()};
+
+                    Cursor c = db.query("info_bebida", campos, "cod_info_bebida = ?", args, null, null, null);
+                    c.moveToFirst();
+                    db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + c.getString(0) + ", " + ((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + ")");
+                    c.close();
                 }
             }
         }
+
 
         startActivity(intent);
     }
