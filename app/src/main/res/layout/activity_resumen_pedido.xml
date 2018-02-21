@@ -31,7 +31,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/resultado_busqueda"
         android:layout_width="355dp"
         android:layout_height="451dp"
         android:layout_marginStart="16dp"

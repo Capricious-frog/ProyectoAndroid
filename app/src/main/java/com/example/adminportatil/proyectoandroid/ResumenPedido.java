@@ -24,7 +24,7 @@ public class ResumenPedido extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
 
-        TextView texto = findViewById(R.id.editText2);
+        TextView texto = findViewById(R.id.resultado_busqueda);
         texto.setEnabled(false);
 
         String nombre = null, direccion = null;
@@ -176,7 +176,7 @@ public class ResumenPedido extends AppCompatActivity {
         //Este es el codigo que permite compartir el contenido del editText
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
 
-        TextView texto = findViewById(R.id.editText2);
+        TextView texto = findViewById(R.id.resultado_busqueda);
 
         sharingIntent.setType("text/plain");
 

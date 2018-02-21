@@ -19,14 +19,19 @@ public class Borrar extends AppCompatActivity {
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
-        RadioButton r1 = findViewById(R.id.radioButton);
-        RadioButton r2 = findViewById(R.id.radioButton2);
-        EditText codigo = findViewById(R.id.editText7);
+        RadioButton r1 = findViewById(R.id.tipo_keb);
+        RadioButton r2 = findViewById(R.id.ped);
+        EditText codigo = findViewById(R.id.cod);
 
         if (r1.isChecked()) {
             db.execSQL("DELETE FROM tipo_kebab WHERE cod_tipo_kebab = " + Integer.parseInt(codigo.getText().toString()) + "");
         } else {
             db.execSQL("DELETE FROM pedido WHERE cod_pedido = " + Integer.parseInt(codigo.getText().toString()) + "");
         }
+    }
+
+    public void cerrar(View v) {
+        finish();
+        System.exit(0);
     }
 }

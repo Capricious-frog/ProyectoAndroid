@@ -19,4 +19,9 @@ public class Actualizar extends AppCompatActivity {
     public void actualizarTipoKebab(View view) {
 
     }
+
+    public void cerrar(View v) {
+        finish();
+        System.exit(0);
+    }
 }

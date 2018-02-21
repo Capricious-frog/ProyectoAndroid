@@ -8,14 +8,14 @@
     tools:layout_editor_absoluteY="25dp">
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="49dp"
         android:layout_marginEnd="25dp"
         android:layout_marginStart="85dp"
         android:layout_marginTop="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/resultado_busqueda"
         app:layout_constraintEnd_toStartOf="@+id/button10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Tipos Kebab"
+            android:text="@string/tipos_kebab"
             tools:layout_editor_absoluteX="56dp"
             tools:layout_editor_absoluteY="42dp" />
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Pedidos" />
+            android:text="@string/pedidos" />
     </RadioGroup>
 
     <Button
@@ -47,13 +47,13 @@
         android:layout_marginTop="51dp"
         android:onClick="buscar"
         android:text="@string/buscar"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/resultado_busqueda"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintStart_toEndOf="@+id/rg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/resultado_busqueda"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="62dp"
@@ -65,7 +65,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10" />
+        app:layout_constraintTop_toBottomOf="@+id/button10"
+        tools:ignore="LabelFor" />
 
     <Button
         android:id="@+id/button11"
@@ -73,8 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginStart="16dp"
+        android:onClick="cerrar"
         android:text="@string/salir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/resultado_busqueda" />
 </android.support.constraint.ConstraintLayout>

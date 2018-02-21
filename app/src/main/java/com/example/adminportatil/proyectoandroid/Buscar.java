@@ -20,7 +20,7 @@ public class Buscar extends AppCompatActivity {
 
         r1 = findViewById(R.id.radioButton);
         r2 = findViewById(R.id.radioButton2);
-        et = findViewById(R.id.editText2);
+        et = findViewById(R.id.resultado_busqueda);
 
         et.setEnabled(false);
     }
@@ -64,5 +64,10 @@ public class Buscar extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void cerrar(View v) {
+        finish();
+        System.exit(0);
     }
 }

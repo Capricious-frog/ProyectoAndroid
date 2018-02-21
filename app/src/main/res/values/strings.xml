@@ -30,12 +30,15 @@
     <string name="buscar">Buscar</string>
     <string name="insertar_tipo_kebab">Insertar Tipo Kebab</string>
     <string name="insertar_pedido">Insertar Pedido</string>
-    <string name="insertar">Insertar</string>
-    <string name="insertar">Insertar</string>
     <string name="precio">precio</string>
     <string name="nombre_tipo_kebab">nombre_tipo_kebab</string>
     <string name="cod_cliente">cod_cliente</string>
     <string name="cod_pedido">cod_pedido</string>
+    <string name="pedido">Pedido</string>
+    <string name="tipo_kebab">Tipo kebab</string>
+    <string name="codigo">Codigo</string>
+    <string name="tipos_kebab">Tipos Kebab</string>
+    <string name="pedidos">Pedidos</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>
