@@ -54,10 +54,9 @@ public class DatosCliente extends AppCompatActivity {
                     Cursor c = db.query("cliente", campos, null, null, null, null, null);
 
                     //Nos aseguramos de que no existe al menos un registro
-                    if (!c.moveToFirst()) {
-                        codigo_cliente = c.getInt(0) + 1;
-                        intent.putExtra("cod_cliente", (c.getInt(0) + 1));
-                    }
+                    c.moveToFirst();
+                    codigo_cliente = c.getInt(0) + 1;
+                    intent.putExtra("cod_cliente", (c.getInt(0) + 1));
 
                     db.execSQL("INSERT INTO pedido (cod_cliente) VALUES (" + (codigo_cliente + 1) + ")");
 
@@ -140,7 +139,7 @@ public class DatosCliente extends AppCompatActivity {
         }
     }
 
-    public void lanzarMantenimiento(View view){
+    public void lanzarMantenimiento(View view) {
         Intent intent = new Intent(this, Modulo_Mantenimiento.class);
 
         startActivity(intent);
