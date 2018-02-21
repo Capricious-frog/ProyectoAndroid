@@ -29,6 +29,7 @@ public class Buscar extends AppCompatActivity {
 
         KebabsSQLiteHelper kqlh = new KebabsSQLiteHelper(this);
         SQLiteDatabase db = kqlh.getWritableDatabase();
+
         String[] campos_tipo_kebab = new String[]{"cod_tipo_kebab", "nombre_tipo_kebab", "precio"};
         String[] campos_pedido = new String[]{"cod_pedido", "cod_cliente", "pedido_completado"};
 
