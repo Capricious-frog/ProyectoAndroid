@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:onClick="insertarTipoKebab"
-        android:text="Insertar"
+        android:text="@string/insertar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -21,9 +21,9 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Insertar Pedido"
+        android:text="@string/insertar_pedido"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="43dp"
         android:layout_marginStart="24dp"
-        android:text="Insertar Tipo Kebab"
+        android:text="@string/insertar_tipo_kebab"
         app:layout_constraintBottom_toTopOf="@+id/nombre"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,7 +44,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="92dp"
         android:ems="10"
-        android:hint="cod_pedido"
+        android:hint="@string/cod_pedido"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="cod_cliente"
+        android:hint="@string/cod_cliente"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/codigo_pedido"
         app:layout_constraintTop_toBottomOf="@+id/codigo_pedido" />
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:text="@string/salir"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -77,7 +77,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="precio"
+        android:hint="@string/precio"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre" />
@@ -86,10 +86,10 @@
         android:id="@+id/button12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginTop="36dp"
         android:onClick="insertarPedido"
-        android:text="Insertar"
+        android:text="@string/insertar"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codigo_cliente" />
 
@@ -100,7 +100,7 @@
         android:layout_marginBottom="177dp"
         android:layout_marginStart="24dp"
         android:ems="10"
-        android:hint="nombre_tipo_kebab"
+        android:hint="@string/nombre_tipo_kebab"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
