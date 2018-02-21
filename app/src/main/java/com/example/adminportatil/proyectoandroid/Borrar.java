@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class Borrar extends AppCompatActivity {
 
@@ -24,8 +25,14 @@ public class Borrar extends AppCompatActivity {
 
         if (r1.isChecked()) {
             db.execSQL("DELETE FROM tipo_kebab WHERE cod_tipo_kebab = " + Integer.parseInt(codigo.getText().toString()) + "");
+
+            Toast toast = Toast.makeText(this, "El tipo de kebab ha sido borrado correctamente.", Toast.LENGTH_SHORT);
+            toast.show();
         } else {
             db.execSQL("DELETE FROM pedido WHERE cod_pedido = " + Integer.parseInt(codigo.getText().toString()) + "");
+
+            Toast toast = Toast.makeText(this, "El pedido ha sido borrado correctamente.", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
