@@ -18,7 +18,7 @@ public class PedidoBebidasActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pedido_bebidas);
 
         Intent intent = getIntent();
-        cod_cliente = intent.getIntExtra("codigo_cliente", 0);
+        cod_cliente = intent.getIntExtra("cod_cliente", 0);
         cod_pedido = intent.getIntExtra("codigo_pedido", 0);
     }
 
@@ -44,13 +44,12 @@ public class PedidoBebidasActivity extends AppCompatActivity {
 
                     Cursor c = db.query("info_bebida", campos, "cod_info_bebida = ?", args, null, null, null);
                     c.moveToFirst();
-                    db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + (Integer.parseInt(c.getString(0)) + 1) + ", " + ((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + ")");
+                    db.execSQL("INSERT INTO bebidas (cod_pedido, cod_info_bebida, cantidad) VALUES (" + cod_pedido + ", " + (Integer.parseInt(c.getString(0))) + ", " + ((Spinner) constraint_layout.getChildAt(i)).getSelectedItemPosition() + ")");
                     c.close();
                 }
             }
         }
-
-
+        
         startActivity(intent);
     }
 
