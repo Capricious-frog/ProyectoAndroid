@@ -42,6 +42,8 @@
     <string name="actualizar_tipo_kebab">Actualizar Tipo Kebab</string>
     <string name="actualizar_pedido">Actualizar Pedido</string>
     <string name="codigo_pedido">codigo_pedido</string>
+    <string name="cod_a_cambiar">cod a cambiar</string>
+    <string name="codigo_a_cambiar">codigo a cambiar</string>
 
     <string-array name="tipo_kebab">
         <item>Döner</item>
