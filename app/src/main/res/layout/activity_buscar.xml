@@ -16,7 +16,7 @@
         android:layout_marginStart="85dp"
         android:layout_marginTop="28dp"
         app:layout_constraintBottom_toTopOf="@+id/resultado_busqueda"
-        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintEnd_toStartOf="@+id/buscar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,7 +39,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/buscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
@@ -65,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button10"
+        app:layout_constraintTop_toBottomOf="@+id/buscar"
         tools:ignore="LabelFor" />
 
     <Button
