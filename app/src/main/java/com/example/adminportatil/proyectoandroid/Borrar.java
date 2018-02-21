@@ -20,7 +20,6 @@ public class Borrar extends AppCompatActivity {
         SQLiteDatabase db = kqlh.getWritableDatabase();
 
         RadioButton r1 = findViewById(R.id.tipo_keb);
-        RadioButton r2 = findViewById(R.id.ped);
         EditText codigo = findViewById(R.id.cod);
 
         if (r1.isChecked()) {
