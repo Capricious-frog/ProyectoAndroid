@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoresumen"
     tools:context="com.example.adminportatil.proyectoandroid.Modulo_Mantenimiento">
 
     <Button
@@ -55,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:onClick="cerrar"
         android:text="@string/salir"
         app:layout_constraintBottom_toBottomOf="parent"
