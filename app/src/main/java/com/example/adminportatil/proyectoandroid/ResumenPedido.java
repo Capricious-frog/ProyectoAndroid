@@ -34,16 +34,16 @@ public class ResumenPedido extends AppCompatActivity {
         cod_pedido = intent.getIntExtra("codigo_pedido", 1);
         cod_cliente = intent.getIntExtra("codigo_cliente", 1);
 
-        String[] campos_datos = {"nombre", "direccion"};
-        String[] campos_kebab = {"cod_tipo_kebab", "cod_tipo_carne", "cod_tamano", "cantidad"};
-        String[] campos_tipo_kebab = {"nombre_tipo_kebab", "precio"};
-        String[] campos_tipo_carne = {"nombre_tipo_carne", "precio"};
-        String[] campos_tamano = {"nombre_tamano", "precio"};
+        String[] campos_datos = new String[]{"nombre", "direccion"};
+        String[] campos_kebab = new String[]{"cod_tipo_kebab", "cod_tipo_carne", "cod_tamano", "cantidad"};
+        String[] campos_tipo_kebab = new String[]{"nombre_tipo_kebab", "precio"};
+        String[] campos_tipo_carne = new String[]{"nombre_tipo_carne", "precio"};
+        String[] campos_tamano = new String[]{"nombre_tamano", "precio"};
 
-        String[] campos_bebida = {"cod_info_bebida", "cantidad"};
-        String[] campos_info_bebida = {"nombre_bebida", "precio"};
-        String[] ccli = {String.valueOf(cod_cliente)};
-        String[] cped = {String.valueOf(cod_pedido)};
+        String[] campos_bebida = new String[]{"cod_info_bebida", "cantidad"};
+        String[] campos_info_bebida = new String[]{"nombre_bebida", "precio"};
+        String[] ccli = new String[]{String.valueOf(cod_cliente)};
+        String[] cped = new String[]{String.valueOf(cod_pedido)};
 
         ArrayList<String> tipo_kebab = new ArrayList<>();
         ArrayList<String> tipo_carne = new ArrayList<>();
@@ -70,8 +70,8 @@ public class ResumenPedido extends AppCompatActivity {
 
         //Guarda los datos del cliente
         if (datos_cliente.moveToFirst()) {
-                nombre = datos_cliente.getString(0);
-                direccion = datos_cliente.getString(1);
+            nombre = datos_cliente.getString(0);
+            direccion = datos_cliente.getString(1);
         }
 
         //Guarda todos los tipos de kebab
