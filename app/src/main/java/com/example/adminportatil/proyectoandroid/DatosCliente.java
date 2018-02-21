@@ -34,7 +34,7 @@ public class DatosCliente extends AppCompatActivity {
 
         String[] campos = new String[]{"MAX(cod_cliente)"};
         String[] args = new String[]{nombre.getText().toString()};
-        int codigo_cliente = 0;
+        int codigo_cliente;
 
         //Validacion de datos
         if (!nombre.getText().toString().isEmpty() && !direccion.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty() && !email.getText().toString().isEmpty()) {
@@ -56,9 +56,9 @@ public class DatosCliente extends AppCompatActivity {
                     //Nos aseguramos de que no existe al menos un registro
                     c.moveToFirst();
                     codigo_cliente = c.getInt(0) + 1;
-                    intent.putExtra("cod_cliente", (c.getInt(0) + 1));
+                    intent.putExtra("cod_cliente", codigo_cliente);
 
-                    db.execSQL("INSERT INTO pedido (cod_cliente) VALUES (" + (codigo_cliente + 1) + ")");
+                    db.execSQL("INSERT INTO pedido (cod_cliente) VALUES (" + codigo_cliente + ")");
 
                     c.close();
                 } else {
