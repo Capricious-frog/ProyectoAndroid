@@ -38,11 +38,11 @@ public class Buscar extends AppCompatActivity {
         if (r1.isChecked()) {
             Cursor tipo = db.query("tipo_kebab", campos_tipo_kebab, null, null, null, null, null);
 
-            if (!tipo.moveToFirst()) {
+            if (tipo.moveToFirst()) {
                 do {
-                    et.append(tipo.getString(0));
-                    et.append("Nombre tipo kebab:" + tipo.getString(1));
-                    et.append("Precio tipo kebab:" + tipo.getInt(2));
+                    et.append("Codigo tipo kebab: " + tipo.getString(0) + "\n");
+                    et.append("Nombre tipo kebab: " + tipo.getString(1) + "\n");
+                    et.append("Precio tipo kebab: " + tipo.getInt(2) + "€\n\n");
                 } while (tipo.moveToNext());
             }
 
@@ -51,11 +51,11 @@ public class Buscar extends AppCompatActivity {
             try {
                 Cursor c = db.query("pedido", campos_pedido, null, null, null, null, null);
 
-                if (!c.moveToFirst()) {
+                if (c.moveToFirst()) {
                     do {
-                        et.append("Codigo pedido:" + c.getInt(0));
-                        et.append("Codigo cliente:" + c.getString(1));
-                        et.append("Pedido compeltado:" + c.getInt(2));
+                        et.append("Codigo pedido: " + c.getInt(0) + "\n");
+                        et.append("Codigo cliente: " + c.getString(1) + "\n");
+                        et.append("Pedido completado: " + c.getInt(2) + "\n");
                     } while (c.moveToNext());
                 }
 
